@@ -1,12 +1,20 @@
 import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Link } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
 
 const navItems = ['Inicio', 'Trayectoria', 'Registro', 'Contacto'];
 
+const navItem = [
+    { name: 'Inicio', documentId: 'carousel' },
+    { name: 'Trayectoria', documentId: 'career' },
+    { name: 'Registro', documentId: '' },
+    { name: 'Contacto', documentId: 'contact' }
+]
+
 export const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+    const [activeItem, setActiveItem] = useState('Inicio');
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -14,6 +22,32 @@ export const Navbar = () => {
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
+    };
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        setAnchorElNav(null);
+
+        switch (sectionId) {
+            case 'carousel':
+                setActiveItem('Inicio')
+                break;
+
+            case 'career':
+                setActiveItem('Trayectoria')
+                break;
+
+            case 'contact':
+                setActiveItem('Contacto')
+                break;
+
+            default:
+                break;
+        }
     };
 
     return (
@@ -44,9 +78,9 @@ export const Navbar = () => {
                         </Typography>
                     </Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        {navItems.map((item) => (
-                            <Button key={item} sx={{ color: '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px' }}>
-                                {item}
+                        {navItem.map((item) => (
+                            <Button onClick={() => scrollToSection(item.documentId)} key={item.name} sx={{ color: activeItem === item.name ? '#9e3832' : '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px', transition: 'all 0.5s ease' }}>
+                                {item.name}
                             </Button>
                         ))}
                     </Box>
@@ -79,9 +113,9 @@ export const Navbar = () => {
                             onClose={handleCloseNavMenu}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
-                            {navItems.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                            {navItem.map((page) => (
+                                <MenuItem key={page.name} onClick={() => scrollToSection(page.documentId)}>
+                                    <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
