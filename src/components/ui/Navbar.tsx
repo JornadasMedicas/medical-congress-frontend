@@ -1,31 +1,23 @@
-import { AppBar, Avatar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, Link } from '@mui/material'
+import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Link } from '@mui/material'
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
 
-const navItems = ['Inicio', 'Jornadas', 'Registro'];
+const navItems = ['Inicio', 'Trayectoria', 'Registro', 'Contacto'];
 
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElUser(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'orange', display: 'flex' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: 'orange', display: 'flex' }}>
             <Container maxWidth={'xl'}>
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', alignItems: 'center' }}>
@@ -53,7 +45,7 @@ export const Navbar = () => {
                     </Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {navItems.map((item) => (
-                            <Button key={item} sx={{ color: '#fff', fontWeight: 600 }}>
+                            <Button key={item} sx={{ color: '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px' }}>
                                 {item}
                             </Button>
                         ))}
@@ -94,7 +86,7 @@ export const Navbar = () => {
                             ))}
                         </Menu>
                     </Box>
-                    
+
                     <Link href='/home' underline='none' sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
                     </Link>
