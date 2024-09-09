@@ -27,7 +27,7 @@ export const Navbar = () => {
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
 
         setAnchorElNav(null);

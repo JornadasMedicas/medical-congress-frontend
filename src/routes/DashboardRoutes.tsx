@@ -11,7 +11,7 @@ export const DashboardRoutes = () => {
             <main>
                 <Outlet />
             </main>
-            {/* <Footer /> */}
+            <Footer />
         </Stack>
     )
 }

@@ -27,7 +27,7 @@ export const items = [
 export const ItemCarousel = (props: any) => {
     
     return (
-        <Paper sx={{ backgroundColor: 'green', minHeight: '42vh', mt: 0, display: 'flex', flexDirection: 'row', position: 'relative', overflow: 'hidden' }}>
+        <Paper sx={{ backgroundColor: 'green', minHeight: '42vh', display: 'flex', flexDirection: 'row', position: 'relative', overflow: 'hidden' }}>
             <Box component={'img'} src={`data:image/png;base64,${props.item.img}`} sx={{ zIndex: 0, position: 'absolute', justifyContent: 'center', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}>
             </Box>
             <Box sx={{ height: { md: '70px', xs: '50px' }, mt: 'auto', ml: { md: '5vh', xs: '2vh' }, zIndex: 2 }}>
