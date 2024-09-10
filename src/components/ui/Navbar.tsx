@@ -2,19 +2,19 @@ import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, To
 import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
-
-const navItems = ['Inicio', 'Trayectoria', 'Registro', 'Contacto'];
+import { useNavigate } from 'react-router-dom';
 
 const navItem = [
-    { name: 'Inicio', documentId: 'carousel' },
-    { name: 'Trayectoria', documentId: 'career' },
-    { name: 'Registro', documentId: '' },
-    { name: 'Contacto', documentId: 'contact' }
+    { name: 'Inicio', pathTo: 'carousel' },
+    { name: 'Trayectoria', pathTo: 'career' },
+    { name: 'Registro', pathTo: 'register' },
+    { name: 'Contacto', pathTo: 'contact' }
 ]
 
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [activeItem, setActiveItem] = useState('Inicio');
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -24,24 +24,27 @@ export const Navbar = () => {
         setAnchorElNav(null);
     };
 
-    const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        }
-
+    const goToSection = (pathTo: string) => {
         setAnchorElNav(null);
 
-        switch (sectionId) {
+        switch (pathTo) {
             case 'carousel':
+                navigate('/?section=carousel', { replace: true })
                 setActiveItem('Inicio')
                 break;
 
             case 'career':
+                navigate('/?section=career', { replace: true })
                 setActiveItem('Trayectoria')
                 break;
 
+            case 'register':
+                navigate('/register', { replace: true })
+                setActiveItem('Registro')
+                break;
+
             case 'contact':
+                navigate('/?section=contact', { replace: true })
                 setActiveItem('Contacto')
                 break;
 
@@ -79,7 +82,7 @@ export const Navbar = () => {
                     </Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {navItem.map((item) => (
-                            <Button onClick={() => scrollToSection(item.documentId)} key={item.name} sx={{ color: activeItem === item.name ? '#9e3832' : '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px', transition: 'all 0.5s ease' }}>
+                            <Button onClick={() => goToSection(item.pathTo)} key={item.name} sx={{ color: activeItem === item.name ? '#9e3832' : '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px', transition: 'all 0.5s ease' }}>
                                 {item.name}
                             </Button>
                         ))}
@@ -114,7 +117,7 @@ export const Navbar = () => {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {navItem.map((page) => (
-                                <MenuItem key={page.name} onClick={() => scrollToSection(page.documentId)}>
+                                <MenuItem key={page.name} onClick={() => goToSection(page.pathTo)}>
                                     <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                                 </MenuItem>
                             ))}

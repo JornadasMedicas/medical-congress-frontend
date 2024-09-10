@@ -6,7 +6,7 @@ import {
 } from "react-router-dom"
 import { DashboardRoutes } from './DashboardRoutes'
 import { Home } from '../components/Home'
-import { About } from '../components/About'
+import { Registro } from '../components/Registro'
 
 export const AppRouter = () => {
     return (
@@ -14,7 +14,7 @@ export const AppRouter = () => {
             <Routes>
                 <Route path='/' element={<DashboardRoutes />}>
                     <Route index element={<Home />} />
-                    <Route path='about' element={<About />} />
+                    <Route path='register' element={<Registro />} />
 
                     <Route path="*" element={<Navigate to="/" />} />
                 </Route>
