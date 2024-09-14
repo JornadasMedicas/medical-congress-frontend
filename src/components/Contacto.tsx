@@ -4,19 +4,20 @@ import { Box, Button, Divider, TextField, Typography } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import EmailIcon from '@mui/icons-material/Email';
 import SendIcon from '@mui/icons-material/Send';
+import { useDispatch } from 'react-redux';
+import { setActiveSection } from '../store/slices/sections';
 
 export const Contacto = () => {
-
-    const { ref, inView } = useInView({
-        triggerOnce: false,
-        threshold: 0.1,
-        trackVisibility: false
-    });
+    const dispatch = useDispatch();
 
     const { ref: ref2, inView: inView2 } = useInView({
         triggerOnce: false,
         threshold: 0.1,
-        delay: 5
+        onChange: (inView: boolean) => { //adjust to not trigger more than once per view
+            if (inView) {
+                inView && dispatch(setActiveSection('Contacto'));
+            }
+        }
     });
 
     return (

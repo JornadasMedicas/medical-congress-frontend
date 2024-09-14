@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
 import { useNavigate } from 'react-router-dom';
+import { ReduxJornadasSlidesSelector } from '../../interfaces/ReduxTrayectoria';
+import { useSelector } from 'react-redux';
 
 const navItem = [
     { name: 'Inicio', pathTo: 'carousel' },
@@ -13,8 +15,12 @@ const navItem = [
 
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-    const [activeItem, setActiveItem] = useState('Inicio');
+    const { activeSection } = useSelector((state: ReduxJornadasSlidesSelector) => state.section);
+    const [activeItem, setActiveItem] = useState<string>('Inicio');
     const navigate = useNavigate();
+
+    console.log(activeItem);
+    
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -29,23 +35,23 @@ export const Navbar = () => {
 
         switch (pathTo) {
             case 'carousel':
-                navigate('/?section=carousel', { replace: true })
-                setActiveItem('Inicio')
+                navigate('/?section=carousel', { replace: true });
+                setActiveItem(activeSection);
                 break;
 
             case 'career':
-                navigate('/?section=career', { replace: true })
-                setActiveItem('Trayectoria')
+                navigate('/?section=career', { replace: true });
+                setActiveItem(activeSection);
                 break;
 
             case 'register':
-                navigate('/register', { replace: true })
-                setActiveItem('Registro')
+                navigate('/register', { replace: true });
+                setActiveItem(activeSection);
                 break;
 
             case 'contact':
-                navigate('/?section=contact', { replace: true })
-                setActiveItem('Contacto')
+                navigate('/?section=contact', { replace: true });
+                setActiveItem(activeSection);
                 break;
 
             default:
@@ -54,7 +60,7 @@ export const Navbar = () => {
     };
 
     return (
-        <AppBar position="fixed" sx={{ backgroundColor: 'orange', display: 'flex' }}>
+        <AppBar position="fixed" sx={{ display: 'flex', backgroundColor: 'orange' }}>
             <Container maxWidth={'xl'}>
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', alignItems: 'center' }}>

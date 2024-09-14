@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import { Box, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
@@ -9,6 +9,7 @@ import { bannersTrayectoria, infoTrayectoria } from '../helpers/data';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReduxJornadasSlidesSelector } from '../interfaces/ReduxTrayectoria';
 import { setJornadasSlide } from '../store/slices/trayectoria';
+import { setActiveSection } from '../store/slices/sections';
 
 export const Trayectoria = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,11 @@ export const Trayectoria = () => {
     const { ref: ref1, inView: inView1 } = useInView({
         triggerOnce: false,
         threshold: 0.3,
-        
+        onChange: (inView: boolean) => { //adjust to not trigger more than once per view
+            if (inView) {
+                inView && dispatch(setActiveSection('Trayectoria'));
+            }
+        }
     });
 
     const handleSlide = (now: number | undefined) => {

@@ -2,8 +2,13 @@ export interface ReduxJornadasSlides {
     slide: PropsJornadasSlides
 }
 
+export interface PropsActiveSection {
+    activeSection: string;
+}
+
 export interface ReduxJornadasSlidesSelector {
     trayectoria: ReduxJornadasSlides
+    section: PropsActiveSection
 }
 
 export interface PropsJornadasSlides {

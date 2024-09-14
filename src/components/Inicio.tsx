@@ -4,12 +4,20 @@ import Carousel from 'react-material-ui-carousel';
 import { ItemHomeCarousel, items } from './ItemHomeCarousel';
 import { Box, Typography } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux';
+import { setActiveSection } from '../store/slices/sections';
 
 export const Inicio = () => {
+    const dispatch = useDispatch();
 
     const { ref: ref0, inView: inView0 } = useInView({
 		triggerOnce: false,
 		threshold: 0.1,
+        onChange: (inView: boolean) => { //adjust to not trigger more than once per view
+            if (inView) {
+                inView && dispatch(setActiveSection('Inicio'));
+            }
+        }
 	});
 
     return (
