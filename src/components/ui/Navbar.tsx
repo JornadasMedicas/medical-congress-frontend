@@ -1,26 +1,30 @@
-import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Link } from '@mui/material'
-import React, { useState } from 'react'
+import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Link, useMediaQuery } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { ReduxJornadasSlidesSelector } from '../../interfaces/ReduxTrayectoria';
 import { useSelector } from 'react-redux';
 
 const navItem = [
     { name: 'Inicio', pathTo: 'carousel' },
     { name: 'Trayectoria', pathTo: 'career' },
-    { name: 'Registro', pathTo: 'register' },
-    { name: 'Contacto', pathTo: 'contact' }
+    { name: 'Contacto', pathTo: 'contact' },
+    { name: 'Registro', pathTo: 'register' }
 ]
 
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const { activeSection } = useSelector((state: ReduxJornadasSlidesSelector) => state.section);
     const [activeItem, setActiveItem] = useState<string>('Inicio');
-    const navigate = useNavigate();
+    const responsive: boolean = useMediaQuery("(max-width : 1050px)");
+    const navigate: NavigateFunction = useNavigate();
 
-    console.log(activeItem);
-    
+    useEffect(() => {
+
+        setActiveItem(activeSection);
+
+    }, [activeSection])
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -33,37 +37,18 @@ export const Navbar = () => {
     const goToSection = (pathTo: string) => {
         setAnchorElNav(null);
 
-        switch (pathTo) {
-            case 'carousel':
-                navigate('/?section=carousel', { replace: true });
-                setActiveItem(activeSection);
-                break;
-
-            case 'career':
-                navigate('/?section=career', { replace: true });
-                setActiveItem(activeSection);
-                break;
-
-            case 'register':
-                navigate('/register', { replace: true });
-                setActiveItem(activeSection);
-                break;
-
-            case 'contact':
-                navigate('/?section=contact', { replace: true });
-                setActiveItem(activeSection);
-                break;
-
-            default:
-                break;
+        if (pathTo === 'register') {
+            navigate(`/register`, { replace: true });
+        } else {
+            navigate(`/?section=${pathTo}`, { replace: true });
         }
     };
 
     return (
-        <AppBar position="fixed" sx={{ display: 'flex', backgroundColor: 'orange' }}>
+        <AppBar position="fixed" sx={{ display: 'flex', background: 'orange' }}>
             <Container maxWidth={'xl'}>
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', alignItems: 'center' }}>
+                    <Box sx={{ display: responsive ? 'none' : 'flex', flexDirection: 'row', alignItems: 'center' }}>
                         <Link href='/home' underline='none' sx={{ mb: -1 }}>
                             <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
                         </Link>
@@ -86,7 +71,7 @@ export const Navbar = () => {
                             JORNADAS MÉDICAS
                         </Typography>
                     </Box>
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ display: responsive ? 'none' : 'flex' }}>
                         {navItem.map((item) => (
                             <Button onClick={() => goToSection(item.pathTo)} key={item.name} sx={{ color: activeItem === item.name ? '#9e3832' : '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px', transition: 'all 0.5s ease' }}>
                                 {item.name}
@@ -95,7 +80,7 @@ export const Navbar = () => {
                     </Box>
 
                     {/* responsive */}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ flexGrow: 1, display: responsive ? 'flex' : 'none' }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -120,7 +105,7 @@ export const Navbar = () => {
                             }}
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
-                            sx={{ display: { xs: 'block', md: 'none' } }}
+                            sx={{ display: responsive ? 'block' : 'none' }}
                         >
                             {navItem.map((page) => (
                                 <MenuItem key={page.name} onClick={() => goToSection(page.pathTo)}>
@@ -130,10 +115,10 @@ export const Navbar = () => {
                         </Menu>
                     </Box>
 
-                    <Link href='/home' underline='none' sx={{ display: { xs: 'flex', md: 'none' } }}>
+                    <Link href='/home' underline='none' sx={{ display: responsive ? 'flex' : 'none' }}>
                         <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
                     </Link>
-                    <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5, display: { xs: 'flex', md: 'none' } }} />
+                    <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5, display: responsive ? 'flex' : 'none' }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -142,7 +127,7 @@ export const Navbar = () => {
                         sx={{
                             mr: 2,
                             ml: 1,
-                            display: { xs: 'flex', md: 'none' },
+                            display: responsive ? 'flex' : 'none',
                             flexGrow: 1,
                             fontFamily: 'sans-serif',
                             fontWeight: 700,

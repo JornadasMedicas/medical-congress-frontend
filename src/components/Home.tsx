@@ -4,7 +4,7 @@ import '../App.css'
 import { Trayectoria } from './Trayectoria';
 import { Inicio } from './Inicio';
 import { Contacto } from './Contacto';
-import { Stack } from '@mui/material';
+import { Stack, useMediaQuery } from '@mui/material';
 
 /* const font =  "'Quicksand', sans-serif";
 
@@ -14,21 +14,31 @@ const theme = createTheme({
   }
 }); */
 
+const navBarHeigth: number = 64;
+const navBarHeigthResponsive: number = 54;
+
 export const Home = () => {
 	const location = useLocation();
+	const responsive: boolean = useMediaQuery("(max-width : 1050px)");
 
 	useEffect(() => {
 		if (location.search) {
-			const hash = new URLSearchParams(location.search).get('section');
+			const hash: string | null = new URLSearchParams(location.search).get('section');
 			if (hash) {
-				document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+				const sectionElement: HTMLElement | null = document.getElementById(hash);
+				if (sectionElement) {
+					window.scrollTo({
+						top: sectionElement.offsetTop - (responsive ? navBarHeigthResponsive : navBarHeigth),
+						behavior: 'smooth'
+					});
+				}
 			}
 		}
-	}, [location.search]);
+	}, [location.search, responsive]);
 
 	return (
 		<Stack sx={{ backgroundColor: '#ffffff'}}>
-			<section id='carousel' style={{ height: '100vh' }}>
+			<section id='carousel'>
 				<Inicio />
 			</section>
 			<section id='career'>
