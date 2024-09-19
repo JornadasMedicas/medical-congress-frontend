@@ -1,7 +1,5 @@
 import { chemicals, jornadas2023 } from "./images"
 
-export const modules: string[] = ['Medicina', 'Químicos', 'Enfermería', 'Estomatología']
-
 export const workshops: string[] = ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales']
 
 export const bannersTrayectoria = [
