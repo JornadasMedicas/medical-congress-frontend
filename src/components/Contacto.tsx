@@ -16,7 +16,6 @@ import Swal from 'sweetalert2'
 const regex = /^[A-Za-z\s]*$/;
 const regexTel = /^\d*$/;
 const regexMailPre = /^[A-Za-z0-9._@-]*$/;
-const regexMailPost = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/;
 const initialState = { nombre: '', telefono: '', correo: '', asunto: '', descripcion: '' }
 
 export const Contacto = () => {
@@ -91,7 +90,7 @@ export const Contacto = () => {
             </Grid>
             <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto' }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ mt: '4vh', visibility: inView ? 'visible' : 'hidden' }}>
-                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: '#9e3832', width: responsive ? '80%' : '50%', m: 'auto' }}>
+                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: 'secondary.main', width: responsive ? '80%' : '50%', m: 'auto' }}>
                         CONTACTO
                     </Divider>
                 </Box>
@@ -105,11 +104,11 @@ export const Contacto = () => {
                         </Typography>
                     </Box>
                     <Box sx={{
-                        width: responsive ? '100%' : 'auto', height: 'auto', borderRadius: 5, mt: 3, border: '1px solid #cc7969', boxShadow: '0 8px 10px 0 rgba(1,18,38, 0.15)'
+                        width: responsive ? '100%' : 'auto', height: 'auto', borderRadius: 5, mt: 3, boxShadow: '0 8px 10px 0 rgba(1,18,38, 0.15)'
                     }}
                     >
                         <Grid container sx={{ height: '100%', overflow: 'hidden', flexDirection: responsive ? 'column' : 'row' }}>
-                            <Grid size={12} sx={{ height: '15%', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'linear-gradient(90deg, rgba(222,141,127,1) 0%, rgba(179,66,45,1) 48%, rgba(200,96,77,1) 100%)', borderTopLeftRadius: 18, borderTopRightRadius: 15, pt: 3, pb: 3 }}>
+                            <Grid size={12} sx={{ height: '15%', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'linear-gradient(90deg, rgba(83,115,109,1) 0%, rgba(19,50,44,1) 48%, rgba(36,70,63,1) 100%);', borderTopLeftRadius: 18, borderTopRightRadius: 15, pt: 3, pb: 3 }}>
                                 <EmailIcon sx={{ width: 'auto', height: '60px', color: 'white' }} />
                             </Grid>
                             <Grid size={12} sx={{ p: 5, height: '85%', display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -117,7 +116,21 @@ export const Contacto = () => {
                                     <Typography fontWeight={'bold'} sx={{ textAlign: 'left' }}>Nombre <b style={{ color: 'red' }}>*</b> </Typography>
                                     <TextField
                                         value={data.nombre}
-                                        sx={{ width: '100%' }}
+                                        sx={{
+                                            width: '100%',
+                                            '& .MuiOutlinedInput-root': {
+                                                '& fieldset': {
+                                                    borderColor: '#c3c3c3', // Color del borde
+                                                },
+                                                '&:hover fieldset': {
+                                                    borderColor: 'background.default', // Color en hover
+                                                },
+                                                '&.Mui-focused fieldset': {
+                                                    border: '1px solid',
+                                                    borderColor: 'background.default', // Color en focus
+                                                }
+                                            }
+                                        }}
                                         size='small'
                                         onChange={(e) => setData({ ...data, nombre: regex.test(e.target.value) ? e.target.value : data.nombre })}
                                         error={(data.nombre === '' && err.nombre) && true}
@@ -128,7 +141,21 @@ export const Contacto = () => {
                                     <Typography fontWeight={'bold'} sx={{ textAlign: 'left' }}>Teléfono <b style={{ color: 'red' }}>*</b> </Typography>
                                     <TextField
                                         value={data.telefono}
-                                        sx={{ width: '100%' }}
+                                        sx={{
+                                            width: '100%',
+                                            '& .MuiOutlinedInput-root': {
+                                                '& fieldset': {
+                                                    borderColor: '#c3c3c3', // Color del borde
+                                                },
+                                                '&:hover fieldset': {
+                                                    borderColor: 'background.default', // Color en hover
+                                                },
+                                                '&.Mui-focused fieldset': {
+                                                    border: '1px solid',
+                                                    borderColor: 'background.default', // Color en focus
+                                                }
+                                            }
+                                        }}
                                         size='small'
                                         onChange={(e) => setData({ ...data, telefono: regexTel.test(e.target.value) ? e.target.value : data.telefono })}
                                         error={(err.telefono && data.telefono.length < 10) && true}
@@ -142,7 +169,21 @@ export const Contacto = () => {
                                     <Typography fontWeight={'bold'} sx={{ textAlign: 'left' }}>Correo <b style={{ color: 'red' }}>*</b> </Typography>
                                     <TextField
                                         value={data.correo}
-                                        sx={{ width: '100%' }}
+                                        sx={{
+                                            width: '100%',
+                                            '& .MuiOutlinedInput-root': {
+                                                '& fieldset': {
+                                                    borderColor: '#c3c3c3', // Color del borde
+                                                },
+                                                '&:hover fieldset': {
+                                                    borderColor: 'background.default', // Color en hover
+                                                },
+                                                '&.Mui-focused fieldset': {
+                                                    border: '1px solid',
+                                                    borderColor: 'background.default', // Color en focus
+                                                }
+                                            }
+                                        }}
                                         size='small'
                                         onChange={(e) => setData({ ...data, correo: regexMailPre.test(e.target.value) ? e.target.value : data.correo })}
                                         error={(data.correo === '' && err.correo) && true}
@@ -153,7 +194,21 @@ export const Contacto = () => {
                                     <Typography fontWeight={'bold'} sx={{ textAlign: 'left' }}>Asunto <b style={{ color: 'red' }}>*</b></Typography>
                                     <TextField
                                         value={data.asunto}
-                                        sx={{ width: '100%' }}
+                                        sx={{
+                                            width: '100%',
+                                            '& .MuiOutlinedInput-root': {
+                                                '& fieldset': {
+                                                    borderColor: '#c3c3c3', // Color del borde
+                                                },
+                                                '&:hover fieldset': {
+                                                    borderColor: 'background.default', // Color en hover
+                                                },
+                                                '&.Mui-focused fieldset': {
+                                                    border: '1px solid',
+                                                    borderColor: 'background.default', // Color en focus
+                                                }
+                                            }
+                                        }}
                                         size='small'
                                         onChange={(e) => setData({ ...data, asunto: regex.test(e.target.value) ? e.target.value : data.asunto })}
                                         error={(data.asunto === '' && err.asunto) && true}
@@ -164,7 +219,21 @@ export const Contacto = () => {
                                     <Typography fontWeight={'bold'} sx={{ textAlign: 'left' }}>Descripción <b style={{ color: 'red' }}>*</b> </Typography>
                                     <TextField
                                         value={data.descripcion}
-                                        sx={{ width: '100%' }}
+                                        sx={{
+                                            width: '100%',
+                                            '& .MuiOutlinedInput-root': {
+                                                '& fieldset': {
+                                                    borderColor: '#c3c3c3', // Color del borde
+                                                },
+                                                '&:hover fieldset': {
+                                                    borderColor: 'background.default', // Color en hover
+                                                },
+                                                '&.Mui-focused fieldset': {
+                                                    border: '1px solid',
+                                                    borderColor: 'background.default', // Color en focus
+                                                }
+                                            }
+                                        }}
                                         size='medium'
                                         multiline
                                         onChange={(e) => setData({ ...data, descripcion: regex.test(e.target.value) ? e.target.value : data.descripcion })}
@@ -195,7 +264,7 @@ export const Contacto = () => {
                     </Box>
                 </Box>
             </Grid>
-            <img style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 9px grey)', bottom: 0, right: '34.5%', maxWidth: '45%', height: 'auto', zIndex: 0 }} src={`data:image/png;base64,${medicImg2}`}></img>
+            <img alt='medic2' style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 9px grey)', bottom: 0, right: '34.5%', maxWidth: '45%', height: 'auto', zIndex: 0 }} src={`data:image/png;base64,${medicImg2}`}></img>
         </Grid>
     )
 }

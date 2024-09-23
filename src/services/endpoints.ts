@@ -1,4 +1,4 @@
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import jornadasApi from '../api/jornadasApi';
 import { PropsFormData } from '../interfaces/ContactForm';
 

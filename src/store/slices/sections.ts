@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { PropsActiveSection } from "../../interfaces/ReduxTrayectoria";
 
-const initialState: PropsActiveSection = { //ajustar al año inicial que se quiere mostrar en el slider de las jornadas
+const initialState: PropsActiveSection = {
     activeSection: ''
 }
 

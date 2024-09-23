@@ -1,13 +1,13 @@
 import React from 'react'
 import Grid from '@mui/material/Grid2';
-import { Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 import { gob_ver, marcaVera } from '../../helpers/images';
 
 export const Footer = () => {
 
     return (
         <>
-            <Grid sx={{ backgroundColor: 'rgba(254, 165, 0, 0.5)' }}>
+            <Grid sx={{ backgroundColor: 'text.secondary' }}>
                 <Container maxWidth='xl' sx={{ padding: '10px' }}>
                     <Grid container sx={{ justifyContent: { xs: 'center' }, display: 'flex', gap: { md: 4, xs: 1 } }}>
                         <Grid sx={{ display: 'flex', textAlign: 'center' }}>
@@ -23,9 +23,9 @@ export const Footer = () => {
                             <img src="https://i.imgur.com/tf4Yg4k.png" alt="sesver" width="160px" height="auto" />
                         </Grid>
                     </Grid>
-                    <Grid container sx={{ justifyContent: 'center', textAlign: 'center', mt: { md: 1 } }}>
+                    {/* <Grid container sx={{ justifyContent: 'center', textAlign: 'center', mt: { md: 1 } }}>
                         <Typography fontWeight={'bold'} fontSize={'15px'}>&copy; 2024 Gobierno de Veracruz. Todos los derechos reservados.</Typography>
-                    </Grid>
+                    </Grid> */}
                 </Container>
             </Grid>
         </>

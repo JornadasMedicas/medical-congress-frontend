@@ -12,6 +12,9 @@ import { setJornadasSlide } from '../store/slices/trayectoria';
 import { setActiveSection } from '../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
 import { medicImg } from '../helpers/images';
+import { PropsGlobalModalInterface } from '../interfaces/Modal';
+import { openModalProps } from '../store/slices/modal';
+import ModalGlobal from './ui/ModalGlobal';
 
 export const Trayectoria = () => {
     const dispatch = useDispatch();
@@ -40,9 +43,21 @@ export const Trayectoria = () => {
         dispatch(setJornadasSlide(currentInfo[0]));
     }
 
+    const openModal = (item: string) => {
+
+        const payload: PropsGlobalModalInterface = {
+            open: true,
+            name: item,
+            args: { item },
+            width: responsive ? '100%' : '80%'
+        }
+
+        dispatch(openModalProps(payload));
+    };
+
     return (
         <Grid container ref={ref2}>
-            <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto', backgroundColor: 'rgba(183, 64, 42, 1)', overflow: 'hidden', pb: 5 }}>
+            <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto', backgroundColor: 'background.default', overflow: 'hidden', pb: 5 }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ mt: '3vh', visibility: inView ? 'visible' : 'hidden' }}>
                     <Divider sx={{
                         fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: '#ffffff', width: responsive ? '80%' : '47%', m: 'auto', "&::before, &::after": { borderColor: "whitesmoke" }
@@ -72,7 +87,7 @@ export const Trayectoria = () => {
             </Grid>
             <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto', position: 'relative' }}>
                 <Box sx={{ mt: '3vh' }}>
-                    <Typography letterSpacing={1} fontFamily={'sans-serif'} fontWeight={700} sx={{ color: '#9e3832', fontSize: responsive ? '50px' : '60px' }}>
+                    <Typography letterSpacing={1} fontFamily={'sans-serif'} fontWeight={700} sx={{ color: 'secondary.main', fontSize: responsive ? '50px' : '60px' }}>
                         {slide.year}
                     </Typography>
                 </Box>
@@ -105,9 +120,10 @@ export const Trayectoria = () => {
                                         }
                                     }}>
                                         <ListItemAvatar>
-                                            <ArrowForwardIosIcon sx={{ color: '#b84026' }} />
+                                            <ArrowForwardIosIcon sx={{ color: 'secondary.main' }} />
                                         </ListItemAvatar>
                                         <ListItemText
+                                            onClick={(e) => openModal(item)}
                                             primary={item}
                                             sx={{
                                                 '.MuiListItemText-primary': {
@@ -137,9 +153,10 @@ export const Trayectoria = () => {
                                         }
                                     }}>
                                         <ListItemAvatar>
-                                            <ArrowForwardIosIcon sx={{ color: '#b84026' }} />
+                                            <ArrowForwardIosIcon sx={{ color: 'secondary.main' }} />
                                         </ListItemAvatar>
                                         <ListItemText
+                                        onClick={(e) => openModal(item)}
                                             primary={item}
                                             sx={{
                                                 '.MuiListItemText-primary': {
@@ -154,8 +171,9 @@ export const Trayectoria = () => {
                         }
                     </List>
                 </Box>
-                <img style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 10px grey)', bottom: 0, right: 0, maxWidth: '55%', height: 'auto', zIndex: 0 }} src={`data:image/png;base64,${medicImg}`}></img>
+                <img alt='medic1' style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 10px grey)', bottom: 0, right: 0, maxWidth: '55%', height: 'auto', zIndex: 0 }} src={`data:image/png;base64,${medicImg}`}></img>
             </Grid>
+            <ModalGlobal />
         </Grid>
     )
 }

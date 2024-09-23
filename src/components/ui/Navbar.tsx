@@ -45,14 +45,14 @@ export const Navbar = () => {
     };
 
     return (
-        <AppBar position="fixed" sx={{ display: 'flex', background: 'orange' }}>
+        <AppBar position="fixed" sx={{ display: 'flex', backgroundColor: 'background.default' }}>
             <Container maxWidth={'xl'}>
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: responsive ? 'none' : 'flex', flexDirection: 'row', alignItems: 'center' }}>
                         <Link href='/home' underline='none' sx={{ mb: -1 }}>
                             <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
                         </Link>
-                        <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5 }} />
+                        <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5, backgroundColor: 'primary.main' }} />
                         <Typography
                             variant="h5"
                             noWrap
@@ -64,7 +64,7 @@ export const Navbar = () => {
                                 fontFamily: 'sans-serif',
                                 fontWeight: 700,
                                 letterSpacing: '.1rem',
-                                color: '#9e3832',
+                                color: 'primary.main',
                                 textDecoration: 'none',
                             }}
                         >
@@ -73,7 +73,7 @@ export const Navbar = () => {
                     </Box>
                     <Box sx={{ display: responsive ? 'none' : 'flex' }}>
                         {navItem.map((item) => (
-                            <Button onClick={() => goToSection(item.pathTo)} key={item.name} sx={{ color: activeItem === item.name ? '#9e3832' : '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px', transition: 'all 0.5s ease' }}>
+                            <Button onClick={() => goToSection(item.pathTo)} key={item.name} sx={{ color: activeItem === item.name ? 'text.secondary' : '#ffffff', fontWeight: 600, textTransform: 'capitalize', fontSize: '16px', transition: 'all 0.5s ease' }}>
                                 {item.name}
                             </Button>
                         ))}
@@ -87,7 +87,7 @@ export const Navbar = () => {
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
-                            color="inherit"
+                            color='primary'
                         >
                             <MenuIcon />
                         </IconButton>
@@ -131,7 +131,7 @@ export const Navbar = () => {
                             flexGrow: 1,
                             fontFamily: 'sans-serif',
                             fontWeight: 700,
-                            color: '#9e3832',
+                            color: 'primary.main',
                             fontSize: '20px',
                             textDecoration: 'none',
                         }}
