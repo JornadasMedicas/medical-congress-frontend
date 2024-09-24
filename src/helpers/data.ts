@@ -1,3 +1,4 @@
+import { medicineModule } from "./careerImages"
 import { chemicals, jornadas2023 } from "./images"
 
 export const workshops: string[] = ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales']
@@ -29,3 +30,21 @@ export const infoTrayectoria = [
         index: 1
     }
 ]
+
+type ModuleInfo = {
+    name: string;
+    img: string;
+}[];
+
+export const infoModules: { [key: string]: ModuleInfo } = {
+    '2023': [
+        { 
+            name: 'Medicina', 
+            img: medicineModule 
+        },
+        { 
+            name: 'Químicos', 
+            img: 'asdada' 
+        },
+    ]
+}

@@ -5,7 +5,7 @@ import Carousel from 'react-material-ui-carousel';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ItemCareerCarousel } from './ItemCareerCarousel';
 import { useInView } from 'react-intersection-observer';
-import { bannersTrayectoria, infoTrayectoria } from '../helpers/data';
+import { bannersTrayectoria, infoModules, infoTrayectoria } from '../helpers/data';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReduxJornadasSlidesSelector } from '../interfaces/ReduxTrayectoria';
 import { setJornadasSlide } from '../store/slices/trayectoria';
@@ -45,10 +45,12 @@ export const Trayectoria = () => {
 
     const openModal = (item: string) => {
 
+        const data: any = infoModules[slide.year];
+
         const payload: PropsGlobalModalInterface = {
             open: true,
             name: item,
-            args: { item },
+            args: { item, data },
             width: responsive ? '100%' : '80%'
         }
 
