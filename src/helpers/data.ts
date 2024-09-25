@@ -1,5 +1,6 @@
-import { medicineModule } from "./careerImages"
+import { chemicalsModule, medicineModule, nursingModule, stomatologyModule } from "./moduleImages2023"
 import { chemicals, jornadas2023 } from "./images"
+import { bioeticWorkshop, stomatologyWorkshop } from "./workshopImages2023"
 
 export const workshops: string[] = ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales']
 
@@ -31,20 +32,67 @@ export const infoTrayectoria = [
     }
 ]
 
-type ModuleInfo = {
+type EventsInfo = {
     name: string;
     img: string;
+    responsiveWidth: string;
+    width: string;
 }[];
 
-export const infoModules: { [key: string]: ModuleInfo } = {
+export const infoModules: { [key: string]: EventsInfo } = {
     '2023': [
-        { 
-            name: 'Medicina', 
-            img: medicineModule 
+        {
+            name: 'Medicina',
+            img: medicineModule,
+            responsiveWidth: '100%',
+            width: '55%'
         },
-        { 
-            name: 'Químicos', 
-            img: 'asdada' 
+        {
+            name: 'Químicos',
+            img: chemicalsModule,
+            responsiveWidth: '100%',
+            width: '55%'
         },
+        {
+            name: 'Enfermería',
+            img: nursingModule,
+            responsiveWidth: '100%',
+            width: '55%'
+        },
+        {
+            name: 'Estomatología',
+            img: stomatologyModule,
+            responsiveWidth: '100%',
+            width: '55%'
+        }
+    ]
+}
+
+export const infoWorkshops: { [key: string]: EventsInfo } = {
+    '2023': [
+        {
+            name: 'Cirugía Maxilofacial',
+            img: stomatologyWorkshop,
+            responsiveWidth: '75%',
+            width: '28%'
+        },
+        {
+            name: 'Paladar Hendido',
+            img: stomatologyWorkshop,
+            responsiveWidth: '75%',
+            width: '28%'
+        },
+        {
+            name: 'Cuidados Paliativos',
+            img: bioeticWorkshop,
+            responsiveWidth: '100%',
+            width: '28%'
+        },
+        {
+            name: 'Restauración Interproximales',
+            img: stomatologyWorkshop,
+            responsiveWidth: '75%',
+            width: '28%'
+        }
     ]
 }

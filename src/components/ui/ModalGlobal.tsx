@@ -1,52 +1,67 @@
-import { Box, Button, Dialog, DialogTitle, Typography, useMediaQuery } from '@mui/material'
-import React from 'react'
+import { Box, Button, Dialog, Stack, Typography, useMediaQuery } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { ReduxModalSelector } from '../../interfaces/Modal';
+import { PropsDatModal, ReduxModalSelector } from '../../interfaces/Modal';
 import { closeModalProps } from '../../store/slices/modal';
-import Grid from '@mui/material/Grid2';
-import { medicineModule } from '../../helpers/careerImages';
 
 const ModalGlobal = () => {
     const dispatch = useDispatch();
     const { props } = useSelector((state: ReduxModalSelector) => state.modal);
-    const responsive: boolean = useMediaQuery("(max-width : 1050px)");
+    const responsive: boolean = useMediaQuery("(max-width : 1020px)");
+    const [data, setData] = useState<PropsDatModal>({ img: '', name: '', responsiveWidth: '', width: '' });
 
     const handleClose = () => {
         dispatch(closeModalProps(null));
     }
 
-    console.log(props.args != null && props.args.data);
+    useEffect(() => {
+        if (props.args != null) {
+            console.log(props);
 
+            const modules = props.args.modules.filter((item: PropsDatModal) => {
+                return item.name === props.name;
+            });
+
+            const workshops = props.args.workshops.filter((item: PropsDatModal) => {
+                return item.name === props.name;
+            })
+
+            workshops.length === 0 ? setData(modules[0]) : setData(workshops[0]);
+        }
+    }, [props]);
 
     return (
-        <>
+        <Stack>
             <Dialog
                 open={props.open}
-                sx={{ //fix responsive
-                    '& .MuiDialog-container': {
-                        '& .MuiPaper-root': {
-                            width: responsive ? '100%' : '50%',
-                            height: responsive ? '70%' : '100%',
-                            maxWidth: props.width === undefined ? 'xl' : props.width,
-                        }
-                    }
+                maxWidth="xl"
+                fullScreen={responsive ? false : true}
+                PaperProps={{
+                    sx: {
+                        backgroundColor: 'transparent', // paper background transparent
+                        boxShadow: 'none', // remove dialog shadow
+                    },
+                }}
+                sx={{
+                    backdropFilter: 'blur(4px)'
                 }}
             >
-                <DialogTitle sx={{ ml: 'auto', mr: 'auto', fontSize: '30px' }}>
-                    <Typography className='animate__animated animate__fadeInUp' sx={{ fontSize: responsive ? '30px' : '50px', fontFamily: 'sans-serif', color: 'secondary.main', textAlign: 'center' }}>{props.name}</Typography>
-                </DialogTitle>
-                <Grid container sx={{ ml: 2, mr: 2, height: '100%' }}>
-                    <Grid size={12} sx={{ textAlign: 'center' }}>
-                        <Box sx={{ height: '100%', overflow: 'hidden', position: 'relative', backgroundColor: 'red' }}>
-                            <img style={{ width: '100%', height: 'auto' }} alt='medicine' src={`data:image/png;base64,${medicineModule}`}></img>
-                        </Box>
-                    </Grid>
-                    <Grid size={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: responsive ? 'flex-end': 'flex-start', overflow: 'hidden' }}>
-                        <Button sx={{ backgroundColor: 'background.default', mb: 2, width: '100px', ml: 'auto', mr: 'auto' }} onClick={handleClose}>Cerrar</Button>
-                    </Grid>
-                </Grid>
-            </Dialog>
-        </>
+                <Box sx={{ height: '100%' }}>
+                    <Box sx={{ paddingLeft: 0, paddingRight: 0, textAlign: 'center', mb: 7, mr: 1, ml: 1 }}>
+                        <Typography textTransform={'uppercase'} className='fonts animate__animated animate__fadeInUp' fontFamily={'sans-serif'} fontWeight={'500'} fontSize={responsive ? '30px' : '42px'} color='primary' mb={1} mt={1} sx={{ '::first-letter': { color: 'text.secondary' } }}>{props.name}</Typography>
+                        <img alt='img' width={responsive ? data.responsiveWidth : data.width} height={'auto'} src={`data:image/png;base64,${data !== undefined && data.img}`} style={{ boxShadow: '0 0px 25px 0 rgba(1,18,38, 0.15)' }} />
+                    </Box>
+                    <Box sx={{ height: 'auto', width: '100%', textAlign: 'center', position: 'absolute', bottom: 0 }}>
+                        <Button
+                            sx={{ backgroundColor: 'background.default', mb: 1.5 }}
+                            onClick={handleClose}
+                        >
+                            Cerrar
+                        </Button>
+                    </Box>
+                </Box>
+            </Dialog >
+        </Stack>
     )
 }
 

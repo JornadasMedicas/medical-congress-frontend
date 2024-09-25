@@ -10,5 +10,12 @@ export interface PropsGlobalModalInterface {
     open: boolean;
     name: string;
     args: any;
-    width?: string; 
+    width?: string;
+}
+
+export interface PropsDatModal {
+    name: string;
+    img: string;
+    responsiveWidth: string;
+    width: string;
 }
