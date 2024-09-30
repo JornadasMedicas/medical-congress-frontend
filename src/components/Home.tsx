@@ -14,8 +14,8 @@ const theme = createTheme({
   }
 }); */
 
-const navBarHeigth: number = 64;
-const navBarHeigthResponsive: number = 54;
+export const navBarHeigth: number = 64;
+export const navBarHeigthResponsive: number = 54;
 
 export const Home = () => {
 	const location = useLocation();

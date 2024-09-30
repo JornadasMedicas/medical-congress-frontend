@@ -21,7 +21,7 @@ export const Navbar = () => {
     const navigate: NavigateFunction = useNavigate();
 
     useEffect(() => {
-
+        
         setActiveItem(activeSection);
 
     }, [activeSection])
