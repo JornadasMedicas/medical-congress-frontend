@@ -34,7 +34,7 @@ export const Contacto = () => {
     const { ref: ref2 } = useInView({//section change
         triggerOnce: false,
         threshold: 0.6,
-        onChange: (inView: boolean) => { //adjust to not trigger more than once per view
+        onChange: (inView: boolean) => {
             if (inView) {
                 inView && dispatch(setActiveSection('Contacto'));
                 navigate(`/?section=Contacto`, { replace: true });

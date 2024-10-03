@@ -30,7 +30,7 @@ export const Trayectoria = () => {
     const { ref: ref2 } = useInView({//section change
         triggerOnce: false,
         threshold: 0.6,
-        onChange: (inView: boolean) => { //adjust to not trigger more than once per view
+        onChange: (inView: boolean) => {
             if (inView) {
                 dispatch(setActiveSection('Trayectoria'));
                 navigate(`/?section=Trayectoria`, { replace: true });

@@ -16,7 +16,7 @@ export const Inicio = () => {
     const { ref, inView } = useInView({
         triggerOnce: false,
         threshold: 0.1,
-        onChange: (inView: boolean) => { //adjust to not trigger more than once per view
+        onChange: (inView: boolean) => {
             if (inView) {
                 inView && dispatch(setActiveSection('Inicio'));
                 navigate(`/?section=Inicio`, { replace: true });
