@@ -1,4 +1,4 @@
-import { JornadasValuesInterface, RegistFormInterface } from "../interfaces/RegistForm"
+import { JornadasValuesInterface, RegistFormInterface } from "../interfaces/IRegistForm"
 import { initValuesFormJornadasErrors } from "./data";
 
 function validateEmail(email: string) {
@@ -19,7 +19,7 @@ function validateEmail(email: string) {
 
 export const validateJornadasFields = ({...data} : RegistFormInterface) => {
     let errors: JornadasValuesInterface = initValuesFormJornadasErrors;
-    let isOk: boolean = false;
+    let isOk: boolean = true;
 
     if (data.acronimo === "") {
         errors = { ...errors, acronimo: { ...errors.acronimo, error: true } }
@@ -51,10 +51,9 @@ export const validateJornadasFields = ({...data} : RegistFormInterface) => {
         errors = { ...errors, ciudad: { ...errors.ciudad, error: true } }
     }
 
-    let isOK: boolean = true;
     for (const [key, value] of Object.entries(errors)) {
         if (value.error) {
-            isOK = false;
+            isOk = false;
         }
     }
 

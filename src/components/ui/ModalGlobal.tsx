@@ -1,7 +1,7 @@
 import { Box, Button, Dialog, Stack, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { PropsDatModal, ReduxModalSelector } from '../../interfaces/Modal';
+import { PropsDatModal, ReduxModalSelector } from '../../interfaces/IModal';
 import { closeModalProps } from '../../store/slices/modal';
 
 const ModalGlobal = () => {

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PropsActiveSection } from "../../interfaces/ReduxTrayectoria";
+import { PropsActiveSection } from "../../interfaces/IReduxTrayectoria";
 
 const initialState: PropsActiveSection = {
     activeSection: ''

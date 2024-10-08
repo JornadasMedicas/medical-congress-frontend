@@ -5,13 +5,14 @@ import { setActiveSection } from '../store/slices/sections';
 import { useDispatch } from 'react-redux';
 import { categorias, initValuesFormJornadas, initValuesFormJornadasErrors, modulos, text } from '../helpers/data';
 import ReCAPTCHA from "react-google-recaptcha";
-import { Autocomplete, Button, Checkbox, Divider, FormControl, InputLabel, Link, ListItemText, MenuItem, Select, TextField, useMediaQuery } from '@mui/material';
+import { Autocomplete, Button, Checkbox, CircularProgress, Divider, FormControl, InputLabel, Link, ListItemText, MenuItem, Select, TextField, useMediaQuery } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { navBarHeigth, navBarHeigthResponsive } from './Home';
 import { Box } from '@mui/system';
-import { JornadasValuesInterface, RegistFormInterface } from '../interfaces/RegistForm';
+import { JornadasValuesInterface, RegistFormInterface } from '../interfaces/IRegistForm';
 import Swal from 'sweetalert2';
 import { validateJornadasFields } from '../helpers/validateRegistForm';
+import { postRegistMail } from '../services/endpoints';
 
 export const Registro = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const Registro = () => {
     const [disabled, setDisabled] = useState<boolean>(false);
     const [values, setValues] = useState<RegistFormInterface>(initValuesFormJornadas);
     const [errors, setErrors] = useState<JornadasValuesInterface>(initValuesFormJornadasErrors);
-
+    const [loading, setLoading] = useState<boolean>(false);
     const { ref, inView } = useInView({//regist typography
         triggerOnce: false,
         threshold: 0.1
@@ -38,13 +39,12 @@ export const Registro = () => {
         }
     });
 
-    const enableButton = (values: any) => {
+    const enableButton = (values: RegistFormInterface) => {
         const confirmText = text(values);
         Swal.fire(
             confirmText
         ).then((result) => {
             if (result.isConfirmed) {
-                console.log('confirm');
                 setVisible(true);
             } else {
                 captcha.current.reset();
@@ -60,27 +60,65 @@ export const Registro = () => {
         disabled == false ? setDisabled(true) : setDisabled(false)
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = async () => {
         const { isOk, errors } = validateJornadasFields(values);
-        console.log('Ok');
+
+        if (isOk) {
+            setDisabled(true);
+            setLoading(true);
+
+            const res: any = await postRegistMail(values);
+
+            if (res.data) {
+                setDisabled(false);
+                setLoading(false);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    html: 'Su pase de entrada (código QR) se enviará a su correo electrónico en breve. <hr><b>No olvide llevarlo consigo pues será su registro de asistencia.<b>',
+                    confirmButtonColor: '#d3c19b'
+                });
+
+                setErrors(initValuesFormJornadasErrors);
+                /* setValues(initValuesFormJornadas); */
+            } else if (res.error) {
+                setDisabled(false);
+                setLoading(false);
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No se ha podido procesar tu solicitud. Intenta más tarde",
+                    showConfirmButton: true,
+                    confirmButtonColor: '#d37c6b'
+                });
+            }
+        } else {
+            setErrors(errors);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Verifica los campos e intenta de nuevo',
+            });
+        }
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
         window.scrollTo(0, 0);
-    }, [pathname]);
+    }, [pathname]); */
 
     return (
         <Grid container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 2, mb: 2 }}>
             <Grid size={12} ref={ref2} sx={{ mb: 2 }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden', width: '100%' }}>
-                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: 'secondary.main', width: responsive ? '80%' : '40%', m: 'auto' }}>
+                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: 'secondary.main', width: responsive ? '80%' : '30%', m: 'auto' }}>
                         REGISTRO
                     </Divider>
                 </Box>
             </Grid>
             <Grid size={12} sx={{ mb: 3 }}>
-                <Box sx={{ width: responsive ? '90%' : '45%', height: '100%', m: 'auto', p: 3, borderRadius: 5, boxShadow: '0 7px 10px 3px rgba(1,18,38, 0.15)', backgroundColor: 'primary.main' }}>
+                <Box sx={{ width: responsive ? '90%' : '40%', height: '100%', m: 'auto', p: 3, borderRadius: 5, boxShadow: '0 7px 10px 3px rgba(1,18,38, 0.15)', backgroundColor: 'primary.main' }}>
                     <FormControl fullWidth sx={{ mt: 2, gap: 3 }}>
                         <Grid>
                             <InputLabel
@@ -128,12 +166,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                /* slotProps={{
-                                    inputLabel: { color: 'black' }
-                                }} */
                                 onChange={(e) => setValues({ ...values, acronimo: e.target.value.toUpperCase() })}
-                            /* error={errors.acronimo?.error}
-                            helperText={errors.acronimo?.error ? errors.acronimo?.msg : ''} */
+                                error={errors.acronimo.error}
+                                helperText={errors.acronimo.error ? errors.acronimo.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -156,8 +191,8 @@ export const Registro = () => {
                                     }
                                 }}
                                 onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                error={errors.nombre.error}
+                                helperText={errors.nombre.error ? errors.nombre.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -179,9 +214,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                onChange={(e) => setValues({ ...values, apellidos: e.target.value.toUpperCase() })}
+                                error={errors.apellidos.error}
+                                helperText={errors.apellidos.error ? errors.apellidos.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -203,9 +238,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                onChange={(e) => setValues({ ...values, rfc: e.target.value.toUpperCase() })}
+                                error={errors.rfc.error}
+                                helperText={errors.rfc.error ? errors.rfc.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -227,9 +262,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                onChange={(e) => setValues({ ...values, correo: e.target.value })}
+                                error={errors.correo.error}
+                                helperText={errors.correo.error ? errors.correo.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -251,9 +286,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                onChange={(e) => setValues({ ...values, tel: e.target.value })}
+                                error={errors.tel.error}
+                                helperText={errors.tel.error ? errors.tel.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -275,9 +310,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                onChange={(e) => setValues({ ...values, ciudad: e.target.value.toUpperCase() })}
+                                error={errors.ciudad.error}
+                                helperText={errors.ciudad.error ? errors.ciudad.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -299,9 +334,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
-                            /* error={errors.nombre?.error}
-                            helperText={errors.nombre?.error ? errors.nombre?.msg : ''} */
+                                onChange={(e) => setValues({ ...values, dependencia: e.target.value.toUpperCase() })}
+                                error={errors.dependencia.error}
+                                helperText={errors.dependencia.error ? errors.dependencia.msg : ''}
                             />
                         </Grid>
                         <Grid>
@@ -333,11 +368,45 @@ export const Registro = () => {
                                                 color: 'black'
                                             }
                                         }}
-                                    /* error={errors.modulo?.error}
-                                    helperText={errors.modulo?.error ? errors.modulo?.msg : ''} */
+                                        error={errors.modulo.error}
+                                        helperText={errors.modulo.error ? errors.modulo.msg : ''}
                                     />
                                 )}
                             />
+                        </Grid>
+                        <Grid columns={2} sx={{ mt: 0 }}>
+                            <fieldset style={{ border: '2px inset #5dadb6', borderRadius: '20px' }}>
+                                <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }}>Talleres Medicina</legend>
+                                <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
+                                    <Checkbox
+                                        sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
+                                        disabled={false}
+                                        checked={values.t1.checked}
+                                        onChange={(e) => setValues({ ...values, t1: { ...values.t1, checked: e.target.checked } })}
+                                    /> <b>23 de Noviembre</b> - Estructura de Intervención en los Cuidados Paliativos, un Enfoque Multidisciplinario e Intersectorial {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
+                                </Grid>
+                            </fieldset>
+                            <fieldset style={{ border: '2px inset #d6c09b', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
+                                <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }} >Talleres Estomatología</legend>
+                                <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
+                                    <Checkbox
+                                        sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
+                                        disabled={false}
+                                        checked={values.t2.checked}
+                                        onChange={(e) => setValues({ ...values, t2: { ...values.t2, checked: e.target.checked } })} />
+                                    <b>23 de Noviembre</b> - Complicaciones y Errores en el Tratamiento de Restauración Interproximales {/* - <b style={{ color: 'red' }}>cupos agotados</b> */} <br />
+                                    <Checkbox
+                                        sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
+                                        disabled={false}
+                                        checked={values.t3.checked}
+                                        onChange={(e) => setValues({ ...values, t3: { ...values.t3, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Utilización de Distintas Técnicas Quirúrgicas en Pacientes de Labio y Paladar Hendido {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}<br />
+                                    <Checkbox
+                                        sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
+                                        disabled={false}
+                                        checked={values.t4.checked}
+                                        onChange={(e) => setValues({ ...values, t4: { ...values.t4, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Cirugía Maxilofacial en Cuba {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
+                                </Grid>
+                            </fieldset>
                         </Grid>
                         <Grid>
                             <ReCAPTCHA
@@ -350,8 +419,7 @@ export const Registro = () => {
                                 onExpired={disableButton}
                                 onClick={(e) => handleSubmit}
                             />
-
-                            <Grid sx={{ display: 'block', mb: -1 }} className='animate__animated animate__fadeInUp'>
+                            <Grid sx={{ display: 'block', mb: -1, textAlign: 'center' }} className='animate__animated animate__fadeInUp'>
                                 <Checkbox sx={{
                                     '&.Mui-checked': {
                                         color: '#2a7dd3',
@@ -361,11 +429,29 @@ export const Registro = () => {
                                 </Link>
                             </Grid>
                         </Grid>
-                        <Grid sx={{ display: 'block', textAlign: 'center' }}>
-                            <Button disabled={disabled} className='animate__animated animate__fadeInUp' variant='contained' onClick={handleSubmit} sx={{ display: 'inline-block', backgroundColor: "text.secondary", ":hover": { backgroundColor: '#b09a6b' }, color: 'primary.main' }}>
-                                Enviar
-                            </Button>
-                        </Grid>
+                        {
+                            true &&
+                            <>
+                                <Grid sx={{ display: 'block', textAlign: 'center', position: 'relative' }}>
+                                    <Button hidden disabled={disabled} className='animate__animated animate__fadeInUp' variant='contained' onClick={handleSubmit} sx={{ backgroundColor: "text.secondary", ":hover": { backgroundColor: '#b09a6b' }, color: 'primary.main' }}>
+                                        Enviar
+                                    </Button>
+                                    {loading && (
+                                        <CircularProgress
+                                            size={24}
+                                            sx={{
+                                                color: '#da8777',
+                                                position: 'absolute',
+                                                top: '53%',
+                                                left: '50%',
+                                                marginTop: '-12px',
+                                                marginLeft: '-12px',
+                                            }}
+                                        />
+                                    )}
+                                </Grid>
+                            </>
+                        }
                     </FormControl>
                 </Box>
             </Grid>

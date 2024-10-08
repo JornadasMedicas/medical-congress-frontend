@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import jornadasApi from '../api/jornadasApi';
-import { PropsFormData } from '../interfaces/ContactForm';
+import { PropsFormData } from '../interfaces/IContactForm';
+import { RegistFormInterface } from '../interfaces/IRegistForm';
 
 export const postContactMail = async ({ ...params }: PropsFormData) => {
     try {
@@ -18,3 +19,13 @@ export const postContactMail = async ({ ...params }: PropsFormData) => {
         return { error: err };
     }
 }
+
+export const postRegistMail = async ({ ...params }: RegistFormInterface) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.post(`/api/register/mail`, { ...params });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+

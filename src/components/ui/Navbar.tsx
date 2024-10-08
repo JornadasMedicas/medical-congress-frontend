@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { ReduxJornadasSlidesSelector } from '../../interfaces/ReduxTrayectoria';
+import { ReduxJornadasSlidesSelector } from '../../interfaces/IReduxTrayectoria';
 import { useSelector } from 'react-redux';
 
 const navItem = [

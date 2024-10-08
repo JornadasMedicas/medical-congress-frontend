@@ -7,7 +7,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useDispatch } from 'react-redux';
 import { setActiveSection } from '../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
-import { PropsErrorsData, PropsFormData } from '../interfaces/ContactForm';
+import { PropsErrorsData, PropsFormData } from '../interfaces/IContactForm';
 import { errors, validateContactFields } from '../helpers/validateContactForm';
 import { postContactMail } from '../services/endpoints';
 import { medicImg2 } from '../helpers/images';
@@ -22,7 +22,7 @@ export const Contacto = () => {
     const dispatch = useDispatch();
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const [data, setData] = useState<PropsFormData>(initialState);
     const [err, setErrors] = useState<PropsErrorsData>(errors);
 

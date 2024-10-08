@@ -1,4 +1,4 @@
-import { PropsErrorsData, PropsFormData } from "../interfaces/ContactForm";
+import { PropsErrorsData, PropsFormData } from "../interfaces/IContactForm";
 
 export const errors: PropsErrorsData = {
     nombre: false,

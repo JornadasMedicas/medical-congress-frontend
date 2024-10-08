@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ReduxJornadasSlides } from "../../interfaces/ReduxTrayectoria";
+import { ReduxJornadasSlides } from "../../interfaces/IReduxTrayectoria";
 
 const initialState: ReduxJornadasSlides = { //ajustar al año inicial que se quiere mostrar en el slider de las jornadas
     slide: {

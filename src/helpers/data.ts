@@ -1,7 +1,7 @@
 import { chemicalsModule, medicineModule, nursingModule, stomatologyModule } from "./moduleImages2023"
 import { chemicals, jornadas2023 } from "./images"
 import { bioeticWorkshop, stomatologyWorkshop } from "./workshopImages2023"
-import { JornadasValuesInterface, RegistFormInterface } from "../interfaces/RegistForm"
+import { JornadasValuesInterface, RegistFormInterface } from "../interfaces/IRegistForm"
 
 //Begin homepage data
 export const workshops: string[] = ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales']
@@ -125,21 +125,26 @@ export const modulos = [
     'Estomatología'
 ]
 
-export const text: any = (values: any, talleres: any) => {
+export const text: any = (values: RegistFormInterface) => {
     return {
         title: 'IMPORTANTE',
         html: '<div style="text-align: center;"><b>Verifique sus datos antes de enviar el formulario. Su constancia de participación será enviada a su correo electrónico con los datos proporcionados al finalizar el evento.</b></div><hr>' +
             '<div style="text-align: left;">' +
             '<b>Categoría:</b> ' + values.categoria + '<br>' +
             '<b>Acrónimo:</b> ' + values.acronimo + '<br>' +
-            '<b>Nombre:</b> ' + values.nombre + ' ' + values.apellido + '<br>' +
+            '<b>Nombre:</b> ' + values.nombre + ' ' + values.apellidos + '<br>' +
             `<b>RFC:</b> ${values.rfc === '' ? '<b style="color: red;">No aplica</b>' : values.rfc}` + '<br>' +
-            '<b>Correo Electrónico:</b> ' + values.email + '<br>' +
+            '<b>Correo Electrónico:</b> ' + values.correo + '<br>' +
             '<b>Teléfono:</b> ' + values.tel + '<br>' +
             '<b>Ciudad:</b> ' + values.ciudad + '<br>' +
-            `<b>Institución:</b> ${values.escuela === '' ? '<b style="color: red;">No aplica</b>' : values.escuela}` + '<br>' +
+            `<b>Dependencia:</b> ${values.dependencia === '' ? '<b style="color: red;">No aplica</b>' : values.dependencia}` + '<br>' +
             `<b>Módulo:</b> ${values.modulo != '' ? `<b style="color: red;">${values.modulo}</b>` : '<b style="color: red;">No aplica</b>'}` + '<br>' +
-            '<br>' +
+            `<b>Talleres:</b>
+            <br>${values.t1.checked === false && values.t2.checked === false && values.t3.checked === false && values.t4.checked === false ? '<b style="color: red;">No aplica</b>' : ''}
+            <br>${values.t1.checked === true ? values.t1.name : ''}
+            <br>${values.t2.checked ? values.t2.name : ''}
+            <br>${values.t3.checked === true ? values.t3.name : ''}
+            <br>${values.t4.checked === true ? values.t4.name : ''}` + '<br>' +
             '</div>' +
             '<hr><b>¡El Centro de Alta Especialidad Dr. Rafael Lucio no se hace responsable por datos mal proporcionados!</b>',
         icon: 'warning',
@@ -161,7 +166,23 @@ export const initValuesFormJornadas: RegistFormInterface = {
     tel: '',
     ciudad: '',
     dependencia: '',
-    modulo: ''
+    modulo: '',
+    t1: {
+        checked: false,
+        name: 'taller1'
+    },
+    t2: {
+        checked: false,
+        name: 'taller2'
+    },
+    t3: {
+        checked: false,
+        name: 'taller3'
+    },
+    t4: {
+        checked: false,
+        name: 'taller4'
+    }
 }
 
 export const initValuesFormJornadasErrors: JornadasValuesInterface = {

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PropsGlobalModal } from "../../interfaces/Modal";
+import { PropsGlobalModal } from "../../interfaces/IModal";
 
 const initialState: PropsGlobalModal = {
     props: {
