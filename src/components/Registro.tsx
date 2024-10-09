@@ -354,7 +354,7 @@ export const Registro = () => {
                                 renderInput={params => (
                                     <TextField
                                         {...params}
-                                        label='Módulo al que asiste *'
+                                        label='Módulo al que asiste (opcional)'
                                         sx={{
                                             '& .MuiOutlinedInput-root.Mui-focused': {
                                                 '& fieldset': {
