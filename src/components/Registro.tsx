@@ -13,6 +13,7 @@ import { JornadasValuesInterface, RegistFormInterface } from '../interfaces/IReg
 import Swal from 'sweetalert2';
 import { validateJornadasFields } from '../helpers/validateRegistForm';
 import { postRegistMail } from '../services/endpoints';
+import { regexAcron, regexCD, regexMailPre, regexRFC, regexReg, regexTel } from '../helpers/regex';
 
 export const Registro = () => {
     const dispatch = useDispatch();
@@ -57,7 +58,7 @@ export const Registro = () => {
     }
 
     const manageDisabled = () => {
-        disabled == false ? setDisabled(true) : setDisabled(false)
+        disabled === false ? setDisabled(true) : setDisabled(false)
     }
 
     const handleSubmit = async () => {
@@ -81,7 +82,7 @@ export const Registro = () => {
                 });
 
                 setErrors(initValuesFormJornadasErrors);
-                /* setValues(initValuesFormJornadas); */
+                setValues(initValuesFormJornadas);
             } else if (res.error) {
                 setDisabled(false);
                 setLoading(false);
@@ -93,6 +94,7 @@ export const Registro = () => {
                     showConfirmButton: true,
                     confirmButtonColor: '#d37c6b'
                 });
+                setErrors(initValuesFormJornadasErrors);
             }
         } else {
             setErrors(errors);
@@ -104,9 +106,9 @@ export const Registro = () => {
         }
     }
 
-    /* useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0, 0);
-    }, [pathname]); */
+    }, [pathname]);
 
     return (
         <Grid container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 2, mb: 2 }}>
@@ -166,7 +168,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, acronimo: e.target.value.toUpperCase() })}
+                                onChange={(e) => setValues({ ...values, acronimo: regexAcron.test(e.target.value) ? e.target.value.toUpperCase() : values.acronimo })}
                                 error={errors.acronimo.error}
                                 helperText={errors.acronimo.error ? errors.acronimo.msg : ''}
                             />
@@ -190,7 +192,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, nombre: e.target.value.toUpperCase() })}
+                                onChange={(e) => setValues({ ...values, nombre: regexReg.test(e.target.value) ? e.target.value.toUpperCase() : values.nombre })}
                                 error={errors.nombre.error}
                                 helperText={errors.nombre.error ? errors.nombre.msg : ''}
                             />
@@ -214,7 +216,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, apellidos: e.target.value.toUpperCase() })}
+                                onChange={(e) => setValues({ ...values, apellidos: regexReg.test(e.target.value) ? e.target.value.toUpperCase() : values.apellidos })}
                                 error={errors.apellidos.error}
                                 helperText={errors.apellidos.error ? errors.apellidos.msg : ''}
                             />
@@ -238,7 +240,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, rfc: e.target.value.toUpperCase() })}
+                                onChange={(e) => setValues({ ...values, rfc: regexRFC.test(e.target.value) ? e.target.value.toUpperCase() : values.rfc })}
                                 error={errors.rfc.error}
                                 helperText={errors.rfc.error ? errors.rfc.msg : ''}
                             />
@@ -262,7 +264,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, correo: e.target.value })}
+                                onChange={(e) => setValues({ ...values, correo: regexMailPre.test(e.target.value) ? e.target.value : values.correo })}
                                 error={errors.correo.error}
                                 helperText={errors.correo.error ? errors.correo.msg : ''}
                             />
@@ -286,7 +288,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, tel: e.target.value })}
+                                onChange={(e) => setValues({ ...values, tel: regexTel.test(e.target.value) ? e.target.value : values.tel })}
                                 error={errors.tel.error}
                                 helperText={errors.tel.error ? errors.tel.msg : ''}
                             />
@@ -310,7 +312,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, ciudad: e.target.value.toUpperCase() })}
+                                onChange={(e) => setValues({ ...values, ciudad: regexCD.test(e.target.value) ? e.target.value.toUpperCase() : values.ciudad })}
                                 error={errors.ciudad.error}
                                 helperText={errors.ciudad.error ? errors.ciudad.msg : ''}
                             />
@@ -334,7 +336,7 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
-                                onChange={(e) => setValues({ ...values, dependencia: e.target.value.toUpperCase() })}
+                                onChange={(e) => setValues({ ...values, dependencia: regexCD.test(e.target.value) ? e.target.value.toUpperCase() : values.dependencia })}
                                 error={errors.dependencia.error}
                                 helperText={errors.dependencia.error ? errors.dependencia.msg : ''}
                             />
@@ -430,7 +432,7 @@ export const Registro = () => {
                             </Grid>
                         </Grid>
                         {
-                            true &&
+                            visible &&
                             <>
                                 <Grid sx={{ display: 'block', textAlign: 'center', position: 'relative' }}>
                                     <Button hidden disabled={disabled} className='animate__animated animate__fadeInUp' variant='contained' onClick={handleSubmit} sx={{ backgroundColor: "text.secondary", ":hover": { backgroundColor: '#b09a6b' }, color: 'primary.main' }}>

@@ -17,7 +17,7 @@ function validateEmail(email: string) {
     }
 }
 
-export const validateJornadasFields = ({...data} : RegistFormInterface) => {
+export const validateJornadasFields = ({ ...data }: RegistFormInterface) => {
     let errors: JornadasValuesInterface = initValuesFormJornadasErrors;
     let isOk: boolean = true;
 
@@ -51,11 +51,15 @@ export const validateJornadasFields = ({...data} : RegistFormInterface) => {
         errors = { ...errors, ciudad: { ...errors.ciudad, error: true } }
     }
 
-    for (const [key, value] of Object.entries(errors)) {
+    if ((data.modulo === '' || data.modulo === null) && !data.t1.checked && !data.t2.checked && !data.t3.checked && !data.t4.checked) { //adjust depends on needs
+        errors = { ...errors, modulo: { error: true, msg: "Debe elegir al menos un módulo o taller" } }
+    }
+
+    Object.entries(errors).forEach(([_, value]) => {
         if (value.error) {
             isOk = false;
         }
-    }
+    });
 
     return {
         isOk,

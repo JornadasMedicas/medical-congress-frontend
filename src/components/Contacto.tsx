@@ -12,10 +12,8 @@ import { errors, validateContactFields } from '../helpers/validateContactForm';
 import { postContactMail } from '../services/endpoints';
 import { medicImg2 } from '../helpers/images';
 import Swal from 'sweetalert2'
+import { regex, regexMailPre, regexTel } from '../helpers/regex';
 
-const regex = /^[A-Za-z\s]*$/;
-const regexTel = /^\d*$/;
-const regexMailPre = /^[A-Za-z0-9._@-]*$/;
 const initialState = { nombre: '', telefono: '', correo: '', asunto: '', descripcion: '' }
 
 export const Contacto = () => {
