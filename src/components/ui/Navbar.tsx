@@ -1,8 +1,8 @@
-import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Link, useMediaQuery } from '@mui/material'
+import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { logo_ver } from '../../helpers/images';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavLink, NavigateFunction, useNavigate } from 'react-router-dom';
 import { ReduxJornadasSlidesSelector } from '../../interfaces/IReduxTrayectoria';
 import { useSelector } from 'react-redux';
 
@@ -21,7 +21,7 @@ export const Navbar = () => {
     const navigate: NavigateFunction = useNavigate();
 
     useEffect(() => {
-        
+
         setActiveItem(activeSection);
 
     }, [activeSection])
@@ -49,27 +49,28 @@ export const Navbar = () => {
             <Container maxWidth={'xl'}>
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: responsive ? 'none' : 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <Link href='/home' underline='none' sx={{ mb: -1 }}>
+                        <NavLink to={'/home'} style={{ marginBottom: -7 }}>
                             <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
-                        </Link>
+                        </NavLink>
                         <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5, backgroundColor: 'primary.main' }} />
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="/home"
-                            sx={{
-                                mr: 1,
-                                ml: 1.5,
-                                fontFamily: 'sans-serif',
-                                fontWeight: 700,
-                                letterSpacing: '.1rem',
-                                color: 'primary.main',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            JORNADAS MÉDICAS
-                        </Typography>
+                        <NavLink to={'/home'} style={{ textDecoration: 'none' }}>
+                            <Typography
+                                variant="h5"
+                                noWrap
+                                component="a"
+                                sx={{
+                                    mr: 1,
+                                    ml: 1.5,
+                                    fontFamily: 'sans-serif',
+                                    fontWeight: 700,
+                                    letterSpacing: '.1rem',
+                                    color: 'primary.main',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                JORNADAS MÉDICAS
+                            </Typography>
+                        </NavLink>
                     </Box>
                     <Box sx={{ display: responsive ? 'none' : 'flex' }}>
                         {navItem.map((item) => (
@@ -114,30 +115,33 @@ export const Navbar = () => {
                             ))}
                         </Menu>
                     </Box>
-
-                    <Link href='/home' underline='none' sx={{ display: responsive ? 'flex' : 'none' }}>
-                        <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
-                    </Link>
-                    <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5, display: responsive ? 'flex' : 'none' }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="/home"
-                        sx={{
-                            mr: 2,
-                            ml: 1,
-                            display: responsive ? 'flex' : 'none',
-                            flexGrow: 1,
-                            fontFamily: 'sans-serif',
-                            fontWeight: 700,
-                            color: 'primary.main',
-                            fontSize: '20px',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        JORNADAS MÉDICAS
-                    </Typography>
+                    <Box sx={{ display: responsive ? 'flex' : 'none', flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <NavLink to={'/home'} style={{ display: responsive ? 'flex' : 'none' }}>
+                                <img src={`data:image/png;base64,${logo_ver}`} alt="Logo_ver" width={'auto'} height={'55px'} />
+                            </NavLink>
+                            <Divider orientation="vertical" variant='middle' flexItem sx={{ ml: 1.5, display: responsive ? 'flex' : 'none', backgroundColor: 'primary.main' }} />
+                            <NavLink to={'/home'} style={{ textDecoration: 'none' }}>
+                                <Typography
+                                    variant="h5"
+                                    noWrap
+                                    sx={{
+                                        mr: 2,
+                                        ml: 1,
+                                        display: responsive ? 'flex' : 'none',
+                                        flexGrow: 1,
+                                        fontFamily: 'sans-serif',
+                                        fontWeight: 700,
+                                        color: 'primary.main',
+                                        fontSize: '20px',
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    JORNADAS MÉDICAS
+                                </Typography>
+                            </NavLink>
+                        </Box>
+                    </Box>
                 </Toolbar>
             </Container>
         </AppBar>
