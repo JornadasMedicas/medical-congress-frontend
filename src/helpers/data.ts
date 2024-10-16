@@ -128,7 +128,7 @@ export const modulos = [
 export const text: any = (values: RegistFormInterface) => {
     return {
         title: 'IMPORTANTE',
-        html: '<div style="text-align: center;"><b>Verifique sus datos antes de enviar el formulario. Su constancia de participación será enviada a su correo electrónico con los datos proporcionados al finalizar el evento.</b></div><hr>' +
+        html: '<div style="text-align: left;"><b>Verifique sus datos antes de enviar el formulario. Su constancia de participación será enviada a su correo electrónico con los datos proporcionados al finalizar el evento.</b></div><hr>' +
             '<div style="text-align: left;">' +
             '<b>Categoría:</b> ' + values.categoria + '<br>' +
             '<b>Acrónimo:</b> ' + values.acronimo + '<br>' +

@@ -5,16 +5,16 @@ import Carousel from 'react-material-ui-carousel';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ItemCareerCarousel } from './ItemCareerCarousel';
 import { useInView } from 'react-intersection-observer';
-import { bannersTrayectoria, infoModules, infoTrayectoria, infoWorkshops } from '../helpers/data';
+import { bannersTrayectoria, infoModules, infoTrayectoria, infoWorkshops } from '../../helpers/data';
 import { useDispatch, useSelector } from 'react-redux';
-import { ReduxJornadasSlidesSelector } from '../interfaces/IReduxTrayectoria';
-import { setJornadasSlide } from '../store/slices/trayectoria';
-import { setActiveSection } from '../store/slices/sections';
+import { ReduxJornadasSlidesSelector } from '../../interfaces/IReduxTrayectoria';
+import { setJornadasSlide } from '../../store/slices/trayectoria';
+import { setActiveSection } from '../../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
-import { medicImg } from '../helpers/images';
-import { PropsGlobalModalInterface } from '../interfaces/IModal';
-import { openModalProps } from '../store/slices/modal';
-import ModalGlobal from './ui/ModalGlobal';
+import { medicImg } from '../../helpers/images';
+import { PropsGlobalModalInterface } from '../../interfaces/IModal';
+import { openModalProps } from '../../store/slices/modal';
+import ModalGlobal from '../ui/ModalGlobal';
 
 export const Trayectoria = () => {
     const dispatch = useDispatch();

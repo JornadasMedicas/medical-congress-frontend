@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from '@mui/material'
 import React from 'react'
-import { medicine, nursing, chemicals, stomatology } from '../helpers/images';
+import { medicine, nursing, chemicals, stomatology } from '../../helpers/images';
 
 export const items = [
     {

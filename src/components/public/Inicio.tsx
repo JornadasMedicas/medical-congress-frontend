@@ -5,7 +5,7 @@ import { ItemHomeCarousel, items } from './ItemHomeCarousel';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
-import { setActiveSection } from '../store/slices/sections';
+import { setActiveSection } from '../../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
 
 export const Inicio = () => {

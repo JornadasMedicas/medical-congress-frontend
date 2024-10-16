@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import { useInView } from 'react-intersection-observer';
-import { setActiveSection } from '../store/slices/sections';
+import { setActiveSection } from '../../store/slices/sections';
 import { useDispatch } from 'react-redux';
-import { categorias, initValuesFormJornadas, initValuesFormJornadasErrors, modulos, text } from '../helpers/data';
+import { categorias, initValuesFormJornadas, initValuesFormJornadasErrors, modulos, text } from '../../helpers/data';
 import ReCAPTCHA from "react-google-recaptcha";
 import { Autocomplete, Button, Checkbox, CircularProgress, Divider, FormControl, InputLabel, Link, ListItemText, MenuItem, Select, TextField, useMediaQuery } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { navBarHeigth, navBarHeigthResponsive } from './Home';
 import { Box } from '@mui/system';
-import { JornadasValuesInterface, RegistFormInterface } from '../interfaces/IRegistForm';
+import { JornadasValuesInterface, RegistFormInterface } from '../../interfaces/IRegistForm';
 import Swal from 'sweetalert2';
-import { validateJornadasFields } from '../helpers/validateRegistForm';
-import { postRegistMail } from '../services/endpoints';
-import { regexAcron, regexCD, regexMailPre, regexRFC, regexReg, regexTel } from '../helpers/regex';
+import { validateJornadasFields } from '../../helpers/validateRegistForm';
+import { postRegistMail } from '../../services/endpoints';
+import { regexAcron, regexCD, regexMailPre, regexRFC, regexReg, regexTel } from '../../helpers/regex';
 
 export const Registro = () => {
     const dispatch = useDispatch();
@@ -90,7 +90,7 @@ export const Registro = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
-                    text: "No se ha podido procesar tu solicitud. Intenta más tarde",
+                    text: res.error.response ? res.error.response.data.msg : 'No se ha podido procesar su solicitud. Intente más tarde',
                     showConfirmButton: true,
                     confirmButtonColor: '#d37c6b'
                 });
@@ -120,7 +120,7 @@ export const Registro = () => {
                 </Box>
             </Grid>
             <Grid size={12} sx={{ mb: 3 }}>
-                <Box sx={{ width: responsive ? '90%' : '40%', height: '100%', m: 'auto', p: 3, borderRadius: 5, boxShadow: '0 7px 10px 3px rgba(1,18,38, 0.15)', backgroundColor: 'primary.main' }}>
+                <Box sx={{ width: responsive ? '90%' : '47%', height: '100%', m: 'auto', p: 3, borderRadius: 5, boxShadow: '0 7px 10px 3px rgba(1,18,38, 0.15)', backgroundColor: 'primary.main' }}>
                     <FormControl fullWidth sx={{ mt: 2, gap: 3 }}>
                         <Grid>
                             <InputLabel

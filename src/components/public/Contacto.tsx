@@ -5,14 +5,14 @@ import { useInView } from 'react-intersection-observer';
 import EmailIcon from '@mui/icons-material/Email';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch } from 'react-redux';
-import { setActiveSection } from '../store/slices/sections';
+import { setActiveSection } from '../../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
-import { PropsErrorsData, PropsFormData } from '../interfaces/IContactForm';
-import { errors, validateContactFields } from '../helpers/validateContactForm';
-import { postContactMail } from '../services/endpoints';
-import { medicImg2 } from '../helpers/images';
+import { PropsErrorsData, PropsFormData } from '../../interfaces/IContactForm';
+import { errors, validateContactFields } from '../../helpers/validateContactForm';
+import { postContactMail } from '../../services/endpoints';
+import { medicImg2 } from '../../helpers/images';
 import Swal from 'sweetalert2'
-import { regex, regexMailPre, regexTel } from '../helpers/regex';
+import { regex, regexMailPre, regexTel } from '../../helpers/regex';
 
 const initialState = { nombre: '', telefono: '', correo: '', asunto: '', descripcion: '' }
 
@@ -66,7 +66,7 @@ export const Contacto = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
-                    text: "No se ha podido procesar tu solicitud. Intenta más tarde",
+                    text: "No se ha podido procesar su solicitud. Intente más tarde",
                     showConfirmButton: true,
                     confirmButtonColor: '#d37c6b'
                 });
@@ -79,7 +79,7 @@ export const Contacto = () => {
             <Grid size={responsive ? 12 : 6} sx={{ height: 'auto', pb: responsive ? '2vh' : 0, display: responsive ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Box sx={{ width: '80%' }}>
                     <Typography fontSize={'20px'} fontFamily={'sans-serif'} textAlign={'justify'} fontWeight={500} letterSpacing={1}>
-                        Para cualquier consulta relacionada al evento, por favor completa el formulario de contacto o comunícate con las subdirección de Enseñanza del Centro de Alta Especialidad Dr. Rafael Lucio al teléfono 228-814-4500 Ext. 1116.
+                        Para cualquier consulta relacionada al evento, por favor completa el formulario de contacto o comunícate con la subdirección de Enseñanza del Centro de Alta Especialidad Dr. Rafael Lucio al teléfono 228-814-4500 Ext. 1116.
                     </Typography>
                     <Typography fontSize={'20px'} fontFamily={'sans-serif'} textAlign={'justify'} fontWeight={500} letterSpacing={1}>
                         Nos comprometemos a atender tu solicitud a la mayor brevedad posible. Gracias por tu interés.
@@ -95,7 +95,7 @@ export const Contacto = () => {
                 <Box sx={{ width: responsive ? '90%' : '75%', m: 'auto', pl: { md: 10 }, pr: { md: 10 }, pb: responsive ? 5 : 0 }}>
                     <Box sx={{ width: responsive ? '100%' : 'auto', m: 'auto', mt: 2, display: responsive ? 'block' : 'none' }}>
                         <Typography fontSize={responsive ? '18px' : '20px'} fontFamily={'sans-serif'} textAlign={'justify'}>
-                            Para cualquier consulta relacionada al evento, por favor completa el formulario de contacto o comunícate con las subdirección de Enseñanza del Centro de Alta Especialidad Dr. Rafael Lucio al teléfono 228-814-4500 Ext. 1116.
+                            Para cualquier consulta relacionada al evento, por favor completa el formulario de contacto o comunícate con la subdirección de Enseñanza del Centro de Alta Especialidad Dr. Rafael Lucio al teléfono 228-814-4500 Ext. 1116.
                         </Typography>
                         <Typography fontSize={responsive ? '18px' : '20px'} fontFamily={'sans-serif'} textAlign={'justify'}>
                             Nos comprometemos a atender tu solicitud a la mayor brevedad posible. Gracias por tu interés.

@@ -1,18 +1,10 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
-import '../App.css'
+import '../../App.css'
 import { Trayectoria } from './Trayectoria';
 import { Inicio } from './Inicio';
 import { Contacto } from './Contacto';
 import { Stack, useMediaQuery } from '@mui/material';
-
-/* const font =  "'Quicksand', sans-serif";
-
-const theme = createTheme({
-  typography: {
-	fontFamily: font
-  }
-}); */
 
 export const navBarHeigth: number = 64;
 export const navBarHeigthResponsive: number = 54;

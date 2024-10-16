@@ -6,8 +6,9 @@ import {
     /* BrowserRouter as Router, Routes, */
 } from "react-router-dom"
 import { DashboardRoutes } from './DashboardRoutes'
-import { Home } from '../components/Home'
-import { Registro } from '../components/Registro'
+import { Home } from '../components/public/Home'
+import { Registro } from '../components/public/Registro'
+import { Admin } from '../components/admin/Admin'
 
 export const AppRouter = () => {
     return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
                 <Route path='/' element={<DashboardRoutes />}>
                     <Route index element={<Home />} />
                     <Route path='register' element={<Registro />} />
+                    <Route path='admin' element={<Admin />} />
 
                     <Route path="*" element={<Navigate to="/" />} />
                 </Route>
