@@ -22,6 +22,7 @@ export const Registro = () => {
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
     const [visible, setVisible] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
+    const [disableCheckboxes, setDisableCheckboxes] = useState<boolean>(false);
     const [values, setValues] = useState<RegistFormInterface>(initValuesFormJornadas);
     const [errors, setErrors] = useState<JornadasValuesInterface>(initValuesFormJornadasErrors);
     const [loading, setLoading] = useState<boolean>(false);
@@ -382,7 +383,7 @@ export const Registro = () => {
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
-                                        disabled={false}
+                                        disabled={disableCheckboxes}
                                         checked={values.t1.checked}
                                         onChange={(e) => setValues({ ...values, t1: { ...values.t1, checked: e.target.checked } })}
                                     /> <b>23 de Noviembre</b> - Estructura de Intervención en los Cuidados Paliativos, un Enfoque Multidisciplinario e Intersectorial {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
@@ -393,18 +394,18 @@ export const Registro = () => {
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
-                                        disabled={false}
+                                        disabled={disableCheckboxes}
                                         checked={values.t2.checked}
                                         onChange={(e) => setValues({ ...values, t2: { ...values.t2, checked: e.target.checked } })} />
                                     <b>23 de Noviembre</b> - Complicaciones y Errores en el Tratamiento de Restauración Interproximales {/* - <b style={{ color: 'red' }}>cupos agotados</b> */} <br />
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
-                                        disabled={false}
+                                        disabled={disableCheckboxes}
                                         checked={values.t3.checked}
                                         onChange={(e) => setValues({ ...values, t3: { ...values.t3, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Utilización de Distintas Técnicas Quirúrgicas en Pacientes de Labio y Paladar Hendido {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}<br />
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
-                                        disabled={false}
+                                        disabled={disableCheckboxes}
                                         checked={values.t4.checked}
                                         onChange={(e) => setValues({ ...values, t4: { ...values.t4, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Cirugía Maxilofacial en Cuba {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
                                 </Grid>

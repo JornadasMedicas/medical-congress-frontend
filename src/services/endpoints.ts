@@ -2,6 +2,25 @@ import { AxiosResponse } from 'axios';
 import jornadasApi from '../api/jornadasApi';
 import { PropsFormData } from '../interfaces/IContactForm';
 import { RegistFormInterface } from '../interfaces/IRegistForm';
+import { PropsGetAssistantsFilters, PropsGetCountAssistantsFilters } from '../interfaces/IAdmin';
+
+export const getAssitants = async ({ ...params }: PropsGetAssistantsFilters) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.get(`/api/assistants/total`, { params });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+
+export const getTotalAssitants = async ({ ...params }: PropsGetCountAssistantsFilters) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.get(`/api/assistants/total/count`, { params });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
 
 export const postContactMail = async ({ ...params }: PropsFormData) => {
     try {

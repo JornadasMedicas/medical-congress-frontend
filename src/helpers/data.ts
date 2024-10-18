@@ -118,7 +118,7 @@ export const categorias = [
     'Médico Residente ISSSTE'
 ]
 
-export const modulos = [
+export const modulos = [ //!IMPORTANT update every year
     'Medicina',
     'Enfermería',
     'Químicos',
@@ -227,3 +227,43 @@ export const initValuesFormJornadasErrors: JornadasValuesInterface = {
         msg: 'Este campo es necesario'
     }
 }
+
+//Begin adminPage data
+
+export const talleresFiltros = [ //!IMPORTANT update every year
+    {
+        id: 1,
+        nombre: 'Cuidados Paliativos'
+    },
+    {
+        id: 2,
+        nombre: 'Restauración Interproximales'
+    },
+    {
+        id: 3,
+        nombre: 'Paladar Hendido'
+    },
+    {
+        id: 4,
+        nombre: 'Cirugía Maxilofacial'
+    }
+]
+
+export const modulosFiltros = [ //!IMPORTANT update every year
+    {
+        id: 5,
+        nombre: 'Medicina'
+    },
+    {
+        id: 6,
+        nombre: 'Enfermería'
+    },
+    {
+        id: 7,
+        nombre: 'Químicos'
+    },
+    {
+        id: 8,
+        nombre: 'Estomatología'
+    }
+]
