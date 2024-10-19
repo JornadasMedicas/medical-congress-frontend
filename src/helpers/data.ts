@@ -1,5 +1,5 @@
 import { chemicalsModule, medicineModule, nursingModule, stomatologyModule } from "./moduleImages2023"
-import { chemicals, jornadas2023 } from "./images"
+import { jornadas2023, jornadas2024, medicImg, medicImg3 } from "./images"
 import { bioeticWorkshop, stomatologyWorkshop } from "./workshopImages2023"
 import { JornadasValuesInterface, RegistFormInterface } from "../interfaces/IRegistForm"
 
@@ -8,28 +8,30 @@ export const workshops: string[] = ['Cirugía Maxilofacial', 'Paladar Hendido', 
 
 export const bannersTrayectoria = [
     { img: jornadas2023 },
-    { img: chemicals }
+    { img: jornadas2024 }
 ]
 
 export const infoTrayectoria = [
     {
         year: '2023',
-        title: 'Primeras Jornadas Postpandemia ¿Qué aprendimos y hacia donde vamos?',
+        title: 'Primeras Jornadas Postpandemia ¿Qué aprendimos y hacia dónde vamos?',
         host: 'Hotel Gamma Nubara',
-        location: 'Av. Adolfo Ruiz Cortines 912 Col, U.H. del Bosque, 91017 Xalapa-Enríquez, Ver.',
+        location: 'Av. Adolfo Ruiz Cortines 912 Col, U.H. del Bosque, 91017 Xalapa-Enríquez, Ver',
         date: 'Del 23 al 25 de Noviembre',
         modules: ['Medicina', 'Químicos', 'Enfermería', 'Estomatología'],
         workshops: ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales'],
+        image: medicImg,
         index: 0
     },
     {
         year: '2024',
-        title: 'Por definir...',
-        host: 'Por definir...',
-        location: 'Por definir...',
-        date: 'Por definir...',
-        modules: ['Por definir'],
+        title: 'Logros y Retos del CAE a sus 35 Años de su Fundación',
+        host: 'Auditorio "La Calera"',
+        location: 'Av. Libertad, Esquina Adalberto Tejada, 91300 Banderilla, Ver',
+        date: 'Del 21 al 23 de Noviembre',
+        modules: ['Medicina', 'Químicos', 'Enfermería', 'Estomatología'],
         workshops: ['Por definir'],
+        image: medicImg3,
         index: 1
     }
 ]

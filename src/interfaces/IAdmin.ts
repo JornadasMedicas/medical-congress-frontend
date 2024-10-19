@@ -51,3 +51,15 @@ export interface PropsReduxAssistantsFilters {
     module: string;
     workshop: string;
 }
+
+export interface ReqAssistantsAutocompleteInterface {
+    id: number | null;
+    nombre: string;
+    correo: string | null;
+}
+
+export interface ReqAssistantsAutocomplete {
+    ok: boolean;
+    msg: string;
+    data: ReqAssistantsAutocompleteInterface[]
+}

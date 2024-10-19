@@ -7,15 +7,23 @@ import Groups2Icon from '@mui/icons-material/Groups2';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Asistentes } from './Asistentes';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setActiveSection } from '../../store/slices/sections';
 
 export const Admin = () => {
+    const dispatch = useDispatch();
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
     const { pathname } = useLocation();
     const [tab, setTab] = useState<string>('2');
 
-    /* useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0, 0);
-    }, [pathname]); */
+        dispatch(setActiveSection('Admin'));
+    }, [pathname]);
+
+    /* useEffect(() => {
+        localStorage.setItem("theme", JSON.stringify(theme));
+    }, [theme]); */
 
     return (
         <Grid container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 3, mb: 3 }}>
@@ -34,7 +42,7 @@ export const Admin = () => {
                         <Tab icon={<PersonAddIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '1' ? 'black' : 'gray' }}>Asistencia</span>} value="1" />
                         <Tab icon={<Groups2Icon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '2' ? 'black' : 'gray' }}>Asistentes</span>} value="2" />
                     </TabList>
-                    <Box sx={{ borderRadius: 3, boxShadow: 4, marginTop: 2, width: responsive ? '95%' : '90%', height: '81vh', ml: 'auto', mr: 'auto' }}>
+                    <Box sx={{ borderRadius: 3, boxShadow: 4, marginTop: 2, width: responsive ? '95%' : '90%', height: responsive ? 'auto' : '81vh', ml: 'auto', mr: 'auto' }}>
                         <TabPanel value="1">
                             si
                         </TabPanel>

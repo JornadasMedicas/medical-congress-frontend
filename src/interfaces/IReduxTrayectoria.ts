@@ -19,5 +19,6 @@ export interface PropsJornadasSlides {
     date: string;
     modules: string[];
     workshops: string[];
+    image: string;
     index: number;
 }

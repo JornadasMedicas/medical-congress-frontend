@@ -11,7 +11,6 @@ import { ReduxJornadasSlidesSelector } from '../../interfaces/IReduxTrayectoria'
 import { setJornadasSlide } from '../../store/slices/trayectoria';
 import { setActiveSection } from '../../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
-import { medicImg } from '../../helpers/images';
 import { PropsGlobalModalInterface } from '../../interfaces/IModal';
 import { openModalProps } from '../../store/slices/modal';
 import ModalGlobal from '../ui/ModalGlobal';
@@ -61,7 +60,7 @@ export const Trayectoria = () => {
     return (
         <Grid container ref={ref2}>
             <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto', backgroundColor: 'background.default', overflow: 'hidden', pb: 5 }}>
-                <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ mt: '3vh', visibility: inView ? 'visible' : 'hidden' }}>
+                <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ mt: '3vh', visibility: inView ? 'visible' : 'hidden', mb: responsive ? -3 : 0, zIndex: 5 }}>
                     <Divider sx={{
                         fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: '#ffffff', width: responsive ? '80%' : '47%', m: 'auto', "&::before, &::after": { borderColor: "whitesmoke" }
                     }}>
@@ -173,8 +172,8 @@ export const Trayectoria = () => {
                             ))
                         }
                     </List>
+                    <img className='animate__animated animate__fadeIn' alt='medic1' style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 10px grey)', bottom: 0, right: 0, maxWidth: '55%', height: 'auto', zIndex: 0, transition: 'all 0.3s ease' }} src={`data:image/png;base64,${slide.image}`}></img>
                 </Box>
-                <img alt='medic1' style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 10px grey)', bottom: 0, right: 0, maxWidth: '55%', height: 'auto', zIndex: 0 }} src={`data:image/png;base64,${medicImg}`}></img>
             </Grid>
             <ModalGlobal />
         </Grid>

@@ -13,6 +13,15 @@ export const getAssitants = async ({ ...params }: PropsGetAssistantsFilters) => 
     }
 }
 
+export const getAssitantsAutocomplete = async (filter: string) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.get(`/api/assistants/filter`, { params: { filter: filter } });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+
 export const getTotalAssitants = async ({ ...params }: PropsGetCountAssistantsFilters) => {
     try {
         const res: AxiosResponse = await jornadasApi.get(`/api/assistants/total/count`, { params });
