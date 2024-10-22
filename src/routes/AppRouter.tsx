@@ -9,7 +9,6 @@ import { DashboardRoutes } from './DashboardRoutes'
 import { Home } from '../components/public/Home'
 import { Registro } from '../components/public/Registro'
 import { Admin } from '../components/admin/Admin'
-import { authReducer } from '../reducers/authReducer'
 /* import { AuthContext } from '../auth/AuthContext' */
 
 const init = () => {
@@ -18,12 +17,11 @@ const init = () => {
 }
 
 export const AppRouter = () => {
-    const [user, dispatch] = useReducer(authReducer, {}, init);
 
-    useEffect(() => {
+    /* useEffect(() => {
         localStorage.setItem("user", JSON.stringify(user));
 
-    }, [user]);
+    }, [user]); */
 
     return (
         <Router>
