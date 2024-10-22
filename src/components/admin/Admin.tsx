@@ -17,9 +17,10 @@ export const Admin = () => {
     const [tab, setTab] = useState<string>('2');
 
     useEffect(() => {
+        console.log('hello');
         window.scrollTo(0, 0);
         dispatch(setActiveSection('Admin'));
-    }, [pathname]);
+    }, [pathname, dispatch]);
 
     /* useEffect(() => {
         localStorage.setItem("theme", JSON.stringify(theme));

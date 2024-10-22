@@ -140,7 +140,7 @@ export const text: any = (values: RegistFormInterface) => {
             '<b>Teléfono:</b> ' + values.tel + '<br>' +
             '<b>Ciudad:</b> ' + values.ciudad + '<br>' +
             `<b>Dependencia:</b> ${values.dependencia === '' ? '<b style="color: red;">No aplica</b>' : values.dependencia}` + '<br>' +
-            `<b>Módulo:</b> ${values.modulo != '' ? `<b style="color: red;">${values.modulo}</b>` : '<b style="color: red;">No aplica</b>'}` + '<br>' +
+            `<b>Módulo:</b> ${values.modulo !== '' ? `<b style="color: red;">${values.modulo}</b>` : '<b style="color: red;">No aplica</b>'}` + '<br>' +
             `<b>Talleres:</b>
             <br>${values.t1.checked === false && values.t2.checked === false && values.t3.checked === false && values.t4.checked === false ? '<b style="color: red;">No aplica</b>' : ''}
             <br>${values.t1.checked === true ? values.t1.name : ''}

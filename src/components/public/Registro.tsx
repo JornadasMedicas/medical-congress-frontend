@@ -22,7 +22,6 @@ export const Registro = () => {
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
     const [visible, setVisible] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
-    const [disableCheckboxes, setDisableCheckboxes] = useState<boolean>(false);
     const [values, setValues] = useState<RegistFormInterface>(initValuesFormJornadas);
     const [errors, setErrors] = useState<JornadasValuesInterface>(initValuesFormJornadasErrors);
     const [loading, setLoading] = useState<boolean>(false);
@@ -30,6 +29,8 @@ export const Registro = () => {
         triggerOnce: false,
         threshold: 0.1
     });
+
+    let disableCheckboxes: boolean = false;
 
     const { ref: ref2 } = useInView({//section change
         triggerOnce: false,

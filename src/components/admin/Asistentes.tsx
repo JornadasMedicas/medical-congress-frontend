@@ -73,11 +73,11 @@ export const Asistentes = () => {
 
         getAssistants();
         getTotal();
-    }, [assistantsTable.tablePage, filters.email, filters.module, filters.workshop]);
+    }, [assistantsTable.tablePage, filters.email, filters.module, filters.workshop, dispatch]);
 
     useEffect(() => {
         dispatch(manageAssistantsTableActionFilters({ email: '', module: '', workshop: '' }))
-    }, []);
+    }, [dispatch]);
 
     return (
         <Grid container className='animate__animated animate__fadeIn' rowSpacing={3} columns={12} sx={{ display: 'flex', flexDirection: 'row' }}>
@@ -212,7 +212,7 @@ export const Asistentes = () => {
                             disableColumnMenu
                             filterMode="server"
                             disableColumnFilter
-                            rows={rows != undefined ? rows : []}
+                            rows={rows !== undefined ? rows : []}
                             paginationMode='server'
                             getRowId={(row) => row.id}
                             rowCount={totalRows}

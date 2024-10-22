@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React from 'react'
 import {
     Navigate,
     Route,
@@ -11,10 +11,10 @@ import { Registro } from '../components/public/Registro'
 import { Admin } from '../components/admin/Admin'
 /* import { AuthContext } from '../auth/AuthContext' */
 
-const init = () => {
+/* const init = () => {
     const user = localStorage.getItem('user');
     return JSON.parse(user ?? '{}') || { logged: false };
-}
+} */
 
 export const AppRouter = () => {
 

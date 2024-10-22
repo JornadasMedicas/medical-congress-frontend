@@ -1,6 +1,5 @@
 import { Box, Pagination, PaginationItem, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import { gridPageCountSelector, gridPageSelector, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAssistantsTableAction } from '../../store/slices/admin';
@@ -13,7 +12,7 @@ export const AsistentesPaginationTable = () => {
     
     useEffect(() => {
         dispatch(setAssistantsTableAction({ key: 'tablePage', value: page }));
-    }, [page])
+    }, [page, dispatch])
 
 
     const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
