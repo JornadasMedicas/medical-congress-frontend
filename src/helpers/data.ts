@@ -102,7 +102,6 @@ export const infoWorkshops: { [key: string]: EventsInfo } = {
 }
 
 //Begin registry page data
-
 export const categorias = [
     'Estudiante (Anahuac)',
     'Estudiante (UV)',
@@ -158,7 +157,7 @@ export const text: any = (values: RegistFormInterface) => {
     }
 }
 
-export const initValuesFormJornadas: RegistFormInterface = {
+export const initValuesFormJornadas: RegistFormInterface = { //!IMPORTANT CHANGE 'name' MODULE EVERY EDITION
     categoria: 'Estudiante (Anahuac)',
     acronimo: '',
     nombre: '',
@@ -231,8 +230,7 @@ export const initValuesFormJornadasErrors: JornadasValuesInterface = {
 }
 
 //Begin adminPage data
-
-export const talleresFiltros = [ //!IMPORTANT update every year
+export const talleresFiltros = [ //!IMPORTANT update every year - doesn't affect backend
     {
         id: 1,
         nombre: 'Cuidados Paliativos'
@@ -251,7 +249,7 @@ export const talleresFiltros = [ //!IMPORTANT update every year
     }
 ]
 
-export const modulosFiltros = [ //!IMPORTANT update every year
+export const modulosFiltros = [ //!IMPORTANT update every year - doesn't affect backend
     {
         id: 5,
         nombre: 'Medicina'

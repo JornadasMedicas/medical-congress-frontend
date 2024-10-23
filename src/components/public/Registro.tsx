@@ -242,6 +242,9 @@ export const Registro = () => {
                                         color: 'black'
                                     }
                                 }}
+                                slotProps={{
+                                    htmlInput: { maxLength: 13 }
+                                }}
                                 onChange={(e) => setValues({ ...values, rfc: regexRFC.test(e.target.value) ? e.target.value.toUpperCase() : values.rfc })}
                                 error={errors.rfc.error}
                                 helperText={errors.rfc.error ? errors.rfc.msg : ''}
