@@ -157,7 +157,7 @@ export const text: any = (values: RegistFormInterface) => {
     }
 }
 
-export const initValuesFormJornadas: RegistFormInterface = { //!IMPORTANT CHANGE 'name' MODULE EVERY EDITION
+export const initValuesFormJornadas: RegistFormInterface = { //!IMPORTANT CHANGE WORKSHOPS INFO EVERY EDITION
     categoria: 'Estudiante (Anahuac)',
     acronimo: '',
     nombre: '',

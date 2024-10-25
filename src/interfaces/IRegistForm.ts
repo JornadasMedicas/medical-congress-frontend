@@ -1,3 +1,5 @@
+import { Moment } from "moment";
+
 export interface WorkshopsFormInterface {
     checked: boolean;
     name: string;

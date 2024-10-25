@@ -57,3 +57,12 @@ export const postRegistMail = async ({ ...params }: RegistFormInterface) => {
     }
 }
 
+export const putRegistAssistance = async (data: string) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.put(`/api/assistants/attendance`, { assistant: data });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+

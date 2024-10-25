@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
-import { Box, Tab, useMediaQuery } from '@mui/material';
+import { Box, LinearProgress, Tab, useMediaQuery } from '@mui/material';
 import { navBarHeigth, navBarHeigthResponsive } from '../public/Home';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import Groups2Icon from '@mui/icons-material/Groups2';
@@ -56,6 +56,7 @@ export const Admin = () => {
                                         <Asistencia />
                                     </TabPanel>
                                     <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'column', justifyContent: 'end' }}>
+                                        {/* <LinearProgress sx={{ backgroundColor: 'green' }}/> */}
                                         <Asistentes />
                                     </TabPanel>
                                 </Box>

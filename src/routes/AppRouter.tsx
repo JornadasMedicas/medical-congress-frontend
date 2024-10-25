@@ -9,19 +9,8 @@ import { DashboardRoutes } from './DashboardRoutes'
 import { Home } from '../components/public/Home'
 import { Registro } from '../components/public/Registro'
 import { Admin } from '../components/admin/Admin'
-/* import { AuthContext } from '../auth/AuthContext' */
-
-/* const init = () => {
-    const user = localStorage.getItem('user');
-    return JSON.parse(user ?? '{}') || { logged: false };
-} */
 
 export const AppRouter = () => {
-
-    /* useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(user));
-
-    }, [user]); */
 
     return (
         <Router>

@@ -4,22 +4,34 @@ import { Box, Button, InputAdornment, TextField, useMediaQuery } from '@mui/mate
 import SendIcon from '@mui/icons-material/Send';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
+import { globalUpdateAssistance } from '../../helpers/assistanceAlerts';
 
 export const Asistencia = () => {
     const [values, setValues] = useState({ qrdata: '', emaildata: '' });
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
 
-   /*  useEffect(() => {
-        let decoded = Buffer.from('dXNlcm5hbWU6cGFzc3dvcmQ=', 'base64').toString('utf8')  
-        let decodedString = decoded.toString("utf8");
-        console.log(decoded);
-        let separator = decoded.split("|").length - 1;
+    const manualAssistance = () => {
+        const data = `${values.emaildata}|`;
+        setValues({ qrdata: '', emaildata: '' });
+        globalUpdateAssistance(data, values, setValues);
+    }
 
-        if (separator === 4) {
-            console.log(values);
+    useEffect(() => {
+        const updateAssistance = async () => {
+            try {
+                let separated = values.qrdata.split("|").length - 1;
+
+                if (separated === 1) {
+                    setValues({ qrdata: '', emaildata: '' });
+                    globalUpdateAssistance(values.qrdata, values, setValues);
+                }
+            } catch (error) {
+                // Se espera que este error ocurra, no hacer nada.
+            }
         }
-
-    }, [values.qrdata]); */
+        
+        updateAssistance();
+    }, [values.qrdata]);
 
     return (
         <Grid container className='animate__animated animate__fadeIn' rowSpacing={3} columns={12} sx={{ display: 'flex', flexDirection: 'row' }}>
@@ -66,7 +78,7 @@ export const Asistencia = () => {
                                         autoComplete='off'
                                         placeholder='asistente@ejemplo.com'
                                         name='email'
-                                        value={values.emaildata.toUpperCase()}
+                                        value={values.emaildata}
                                         onChange={(e) => setValues({ ...values, emaildata: e.target.value })}
                                         InputProps={{
                                             startAdornment: (
@@ -88,10 +100,10 @@ export const Asistencia = () => {
                                         fullWidth
                                     />
                                     <Button
-                                        disabled={false}
+                                        disabled={values.emaildata === '' ? true : false}
                                         endIcon={<SendIcon />}
                                         variant='contained'
-                                        /* onClick={fetchManualInvitado} */
+                                        onClick={manualAssistance}
                                         sx={{ backgroundColor: "#ca7757", ":hover": { backgroundColor: '#b7402a' }, marginBottom: 0, marginTop: 2, marginLeft: 1, width: '95px', height: '30px' }}
                                     >
                                         Enviar
