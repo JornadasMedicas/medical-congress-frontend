@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
-import { Box, LinearProgress, Tab, useMediaQuery } from '@mui/material';
+import { Box, Tab, useMediaQuery } from '@mui/material';
 import { navBarHeigth, navBarHeigthResponsive } from '../public/Home';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import Groups2Icon from '@mui/icons-material/Groups2';
@@ -52,11 +52,10 @@ export const Admin = () => {
                                     <Tab icon={<Groups2Icon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '2' ? 'black' : 'gray' }}>Asistentes</span>} value="2" />
                                 </TabList>
                                 <Box sx={{ borderRadius: 3, boxShadow: 4, marginTop: 2, width: responsive ? '95%' : '90%', height: responsive ? 'auto' : '81vh', ml: 'auto', mr: 'auto' }}>
-                                    <TabPanel value="1">
+                                    <TabPanel value="1" sx={{ m: 0, p: responsive ? 0 : 2, display: 'flex', flexDirection: 'column', justifyContent: 'end' }}>
                                         <Asistencia />
                                     </TabPanel>
                                     <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'column', justifyContent: 'end' }}>
-                                        {/* <LinearProgress sx={{ backgroundColor: 'green' }}/> */}
                                         <Asistentes />
                                     </TabPanel>
                                 </Box>

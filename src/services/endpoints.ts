@@ -66,3 +66,12 @@ export const putRegistAssistance = async (data: string) => {
     }
 }
 
+export const putRegistAssistanceWorkshops = async (data: string) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.put(`/api/assistants/attendanceWorkshops`, { assistant: data });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+

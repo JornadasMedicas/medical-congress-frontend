@@ -71,7 +71,7 @@ export const Registro = () => {
             setLoading(true);
 
             const res: any = await postRegistMail(values);
-
+            
             if (res.data) {
                 setDisabled(false);
                 setLoading(false);
