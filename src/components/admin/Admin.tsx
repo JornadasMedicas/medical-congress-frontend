@@ -55,7 +55,7 @@ export const Admin = () => {
                                     <TabPanel value="1" sx={{ m: 0, p: responsive ? 0 : 2, display: 'flex', flexDirection: 'column', justifyContent: 'end' }}>
                                         <Asistencia />
                                     </TabPanel>
-                                    <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'column', justifyContent: 'end' }}>
+                                    <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'end' }}>
                                         <Asistentes />
                                     </TabPanel>
                                 </Box>
