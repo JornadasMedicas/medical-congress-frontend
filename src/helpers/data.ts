@@ -170,7 +170,7 @@ export const initValuesFormJornadas: RegistFormInterface = { //!IMPORTANT CHANGE
     modulo: '',
     t1: {
         checked: false,
-        name: 'Taller Químicos'
+        name: 'Estrategias Integradas'
     },
     t2: {
         checked: false,
@@ -233,19 +233,7 @@ export const initValuesFormJornadasErrors: JornadasValuesInterface = {
 export const talleresFiltros = [ //!IMPORTANT update every year - doesn't affect backend
     {
         id: 1,
-        nombre: 'Cuidados Paliativos'
-    },
-    {
-        id: 2,
-        nombre: 'Restauración Interproximales'
-    },
-    {
-        id: 3,
-        nombre: 'Paladar Hendido'
-    },
-    {
-        id: 4,
-        nombre: 'Cirugía Maxilofacial'
+        nombre: 'Estrategias Integradas'
     }
 ]
 

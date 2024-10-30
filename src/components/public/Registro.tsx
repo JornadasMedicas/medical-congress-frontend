@@ -389,7 +389,7 @@ export const Registro = () => {
                                         disabled={disableCheckboxes}
                                         checked={values.t1.checked}
                                         onChange={(e) => setValues({ ...values, t1: { ...values.t1, checked: e.target.checked } })}
-                                    /> <b>22 de Noviembre</b> - Taller de Químicos {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
+                                    /> <b>22 de Noviembre</b> - Estrategias Integradas para el Manejo del Paciente Crítico {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
                                 </Grid>
                             </fieldset>
                             {/* <fieldset style={{ border: '2px inset #d6c09b', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
