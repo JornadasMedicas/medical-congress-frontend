@@ -9,6 +9,7 @@ import { DashboardRoutes } from './DashboardRoutes'
 import { Home } from '../components/public/Home'
 import { Registro } from '../components/public/Registro'
 import { Admin } from '../components/admin/Admin'
+import { Programa } from '../components/public/Programa'
 
 export const AppRouter = () => {
 
@@ -17,6 +18,7 @@ export const AppRouter = () => {
             <Routes>
                 <Route path='/' element={<DashboardRoutes />}>
                     <Route index element={<Home />} />
+                    <Route path='program' element={<Programa />} />
                     <Route path='register' element={<Registro />} />
                     <Route path='admin' element={<Admin />} />
 

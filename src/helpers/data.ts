@@ -7,8 +7,8 @@ import { JornadasValuesInterface, RegistFormInterface } from "../interfaces/IReg
 export const workshops: string[] = ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales']
 
 export const bannersTrayectoria = [
-    { img: jornadas2023 },
-    { img: jornadas2024 }
+    { img: jornadas2023 }
+    /* { img: jornadas2024 } */
 ]
 
 export const infoTrayectoria = [
@@ -22,8 +22,8 @@ export const infoTrayectoria = [
         workshops: ['Cirugía Maxilofacial', 'Paladar Hendido', 'Cuidados Paliativos', 'Restauración Interproximales'],
         image: medicImg,
         index: 0
-    },
-    {
+    }
+    /* {
         year: '2024',
         title: 'Logros y Retos del CAE a sus 35 Años de su Fundación',
         host: 'Auditorio "La Calera"',
@@ -33,7 +33,7 @@ export const infoTrayectoria = [
         workshops: ['Por definir'],
         image: medicImg3,
         index: 1
-    }
+    } */
 ]
 
 type EventsInfo = {
@@ -170,7 +170,7 @@ export const initValuesFormJornadas: RegistFormInterface = { //!IMPORTANT CHANGE
     modulo: '',
     t1: {
         checked: false,
-        name: 'taller1'
+        name: 'Taller Químicos'
     },
     t2: {
         checked: false,

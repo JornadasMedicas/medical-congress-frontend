@@ -25,12 +25,11 @@ export const Registro = () => {
     const [values, setValues] = useState<RegistFormInterface>(initValuesFormJornadas);
     const [errors, setErrors] = useState<JornadasValuesInterface>(initValuesFormJornadasErrors);
     const [loading, setLoading] = useState<boolean>(false);
+    let disableCheckboxes: boolean = false;
     const { ref, inView } = useInView({//regist typography
         triggerOnce: false,
         threshold: 0.1
     });
-
-    let disableCheckboxes: boolean = false;
 
     const { ref: ref2 } = useInView({//section change
         triggerOnce: false,
@@ -383,17 +382,17 @@ export const Registro = () => {
                         </Grid>
                         <Grid columns={2} sx={{ mt: 0 }}>
                             <fieldset style={{ border: '2px inset #5dadb6', borderRadius: '20px' }}>
-                                <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }}>Talleres Medicina</legend>
+                                <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }}>Taller Químicos</legend>
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t1.checked}
                                         onChange={(e) => setValues({ ...values, t1: { ...values.t1, checked: e.target.checked } })}
-                                    /> <b>23 de Noviembre</b> - Estructura de Intervención en los Cuidados Paliativos, un Enfoque Multidisciplinario e Intersectorial {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
+                                    /> <b>22 de Noviembre</b> - Taller de Químicos {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
                                 </Grid>
                             </fieldset>
-                            <fieldset style={{ border: '2px inset #d6c09b', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
+                            {/* <fieldset style={{ border: '2px inset #d6c09b', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
                                 <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }} >Talleres Estomatología</legend>
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
@@ -401,19 +400,19 @@ export const Registro = () => {
                                         disabled={disableCheckboxes}
                                         checked={values.t2.checked}
                                         onChange={(e) => setValues({ ...values, t2: { ...values.t2, checked: e.target.checked } })} />
-                                    <b>23 de Noviembre</b> - Complicaciones y Errores en el Tratamiento de Restauración Interproximales {/* - <b style={{ color: 'red' }}>cupos agotados</b> */} <br />
+                                    <b>23 de Noviembre</b> - Complicaciones y Errores en el Tratamiento de Restauración Interproximales <br />
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t3.checked}
-                                        onChange={(e) => setValues({ ...values, t3: { ...values.t3, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Utilización de Distintas Técnicas Quirúrgicas en Pacientes de Labio y Paladar Hendido {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}<br />
+                                        onChange={(e) => setValues({ ...values, t3: { ...values.t3, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Utilización de Distintas Técnicas Quirúrgicas en Pacientes de Labio y Paladar Hendido<br />
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t4.checked}
-                                        onChange={(e) => setValues({ ...values, t4: { ...values.t4, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Cirugía Maxilofacial en Cuba {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
+                                        onChange={(e) => setValues({ ...values, t4: { ...values.t4, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Cirugía Maxilofacial en Cuba
                                 </Grid>
-                            </fieldset>
+                            </fieldset> */}
                         </Grid>
                         <Grid>
                             <ReCAPTCHA

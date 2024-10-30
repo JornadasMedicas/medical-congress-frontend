@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 const navItem = [
     { name: 'Inicio', pathTo: 'carousel' },
+    { name: 'Programa', pathTo: 'program' },
     { name: 'Trayectoria', pathTo: 'career' },
     { name: 'Contacto', pathTo: 'contact' },
     { name: 'Registro', pathTo: 'register' }
@@ -39,6 +40,8 @@ export const Navbar = () => {
 
         if (pathTo === 'register') {
             navigate(`/register`, { replace: true });
+        } else if (pathTo === 'program') {
+            navigate(`/program`, { replace: true });
         } else {
             navigate(`/?section=${pathTo}`, { replace: true });
         }
