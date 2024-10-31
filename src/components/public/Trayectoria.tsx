@@ -31,8 +31,8 @@ export const Trayectoria = () => {
         threshold: 0.6,
         onChange: (inView: boolean) => {
             if (inView) {
-                dispatch(setActiveSection('Trayectoria'));
-                navigate(`/?section=Trayectoria`, { replace: true });
+                dispatch(setActiveSection('Historia'));
+                navigate(`/?section=Historia`, { replace: true });
             }
         }
     });
@@ -64,7 +64,7 @@ export const Trayectoria = () => {
                     <Divider sx={{
                         fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: '#ffffff', width: responsive ? '80%' : '47%', m: 'auto', "&::before, &::after": { borderColor: "whitesmoke" }
                     }}>
-                        TRAYECTORIA
+                        HISTORIA
                     </Divider>
                 </Box>
                 <Box sx={{ width: '85%', m: 'auto', pt: 2 }}>
