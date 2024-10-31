@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import { navBarHeigth, navBarHeigthResponsive } from './Home';
-import { Tab, Typography, useMediaQuery } from '@mui/material';
+import { Divider, Tab, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
@@ -11,13 +11,13 @@ import { Dia1 } from './Dia1';
 import { Dia2 } from './Dia2';
 import { Dia3 } from './Dia3';
 import TodayIcon from '@mui/icons-material/Today';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Programa = () => {
     const dispatch = useDispatch();
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
     const [tab, setTab] = useState<string>('1');
-    const { pathname } = useLocation();
+    const navigate = useNavigate();
     const { ref, inView } = useInView({//regist typography
         triggerOnce: false,
         threshold: 0.1
@@ -29,18 +29,20 @@ export const Programa = () => {
         onChange: (inView: boolean) => {
             if (inView) {
                 inView && dispatch(setActiveSection('Programa'));
+                navigate(`/?section=Programa`, { replace: true });
             }
         }
     });
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
-
     return (
-        <Grid ref={ref} container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 2, mb: 2 }}>
+        <Grid ref={ref} container sx={{ pt: 1, mb: 2 }}>
             <Grid size={12} ref={ref2} sx={{ mb: 2 }}>
-                <Box sx={{ visibility: inView ? 'visible' : 'hidden', width: '100%', textAlign: 'center' }}>
+                <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden', mb: 2, mt: 2 }}>
+                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: 'secondary.main', width: responsive ? '80%' : '50%', m: 'auto' }}>
+                        PROGRAMA 2024
+                    </Divider>
+                </Box>
+                <Box sx={{ visibility: 'visible', width: '95%', textAlign: 'center', m: 'auto' }}>
                     <TabContext value={tab}>
                         <TabList
                             TabIndicatorProps={{
@@ -52,9 +54,9 @@ export const Programa = () => {
                             variant='fullWidth'
                             sx={{ maxHeight: 60, boxShadow: 4, ml: 'auto', mr: 'auto', maxWidth: responsive ? '100%' : '100%' }}
                         >
-                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '1' ? 'black' : 'gray' }}>21 de Noviembre 2024</span>} value="1" />
-                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '2' ? 'black' : 'gray' }}>22 de Noviembre 2024</span>} value="2" />
-                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '3' ? 'black' : 'gray' }}>23 de Noviembre 2024</span>} value="3" />
+                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '1' ? 'black' : 'gray' }}>21 de Noviembre</span>} value="1" />
+                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '2' ? 'black' : 'gray' }}>22 de Noviembre</span>} value="2" />
+                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '3' ? 'black' : 'gray' }}>23 de Noviembre</span>} value="3" />
                         </TabList>
                         <Box sx={{ borderRadius: 3, marginTop: 2, width: '100%', height: 'auto', ml: 'auto', mr: 'auto', display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center' }}>

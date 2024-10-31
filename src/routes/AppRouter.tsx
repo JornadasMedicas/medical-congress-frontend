@@ -18,7 +18,6 @@ export const AppRouter = () => {
             <Routes>
                 <Route path='/' element={<DashboardRoutes />}>
                     <Route index element={<Home />} />
-                    <Route path='program' element={<Programa />} />
                     <Route path='register' element={<Registro />} />
                     <Route path='admin' element={<Admin />} />
 
