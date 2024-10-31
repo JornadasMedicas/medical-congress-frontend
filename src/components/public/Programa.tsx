@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import { navBarHeigth, navBarHeigthResponsive } from './Home';
-import { Tab, useMediaQuery } from '@mui/material';
+import { Tab, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
@@ -40,7 +40,7 @@ export const Programa = () => {
     return (
         <Grid ref={ref} container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 2, mb: 2 }}>
             <Grid size={12} ref={ref2} sx={{ mb: 2 }}>
-                <Box sx={{ visibility: inView ? 'visible' : 'hidden', width: '100%' }}>
+                <Box sx={{ visibility: inView ? 'visible' : 'hidden', width: '100%', textAlign: 'center' }}>
                     <TabContext value={tab}>
                         <TabList
                             TabIndicatorProps={{
@@ -50,11 +50,11 @@ export const Programa = () => {
                             }}
                             onChange={(e, value) => setTab(value)}
                             variant='fullWidth'
-                            sx={{ maxHeight: 55, boxShadow: 4, ml: 'auto', mr: 'auto', maxWidth: responsive ? '100%' : '100%' }}
+                            sx={{ maxHeight: 60, boxShadow: 4, ml: 'auto', mr: 'auto', maxWidth: responsive ? '100%' : '100%' }}
                         >
-                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '1' ? 'black' : 'gray' }}>21 de Noviembre</span>} value="1" />
-                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '2' ? 'black' : 'gray' }}>22 de Noviembre</span>} value="2" />
-                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '3' ? 'black' : 'gray' }}>23 de Noviembre</span>} value="3" />
+                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '1' ? 'black' : 'gray' }}>21 de Noviembre 2024</span>} value="1" />
+                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '2' ? 'black' : 'gray' }}>22 de Noviembre 2024</span>} value="2" />
+                            <Tab icon={<TodayIcon color="action" />} iconPosition='start' sx={{ fontWeight: 'bold', paddingTop: 0 }} label={<span style={{ color: tab === '3' ? 'black' : 'gray' }}>23 de Noviembre 2024</span>} value="3" />
                         </TabList>
                         <Box sx={{ borderRadius: 3, marginTop: 2, width: '100%', height: 'auto', ml: 'auto', mr: 'auto', display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center' }}>
