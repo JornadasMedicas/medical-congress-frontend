@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid2';
-import { navBarHeigth, navBarHeigthResponsive } from './Home';
-import { Divider, Tab, Typography, useMediaQuery } from '@mui/material';
+import { Divider, Tab, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
@@ -11,7 +10,7 @@ import { Dia1 } from './Dia1';
 import { Dia2 } from './Dia2';
 import { Dia3 } from './Dia3';
 import TodayIcon from '@mui/icons-material/Today';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Programa = () => {
     const dispatch = useDispatch();

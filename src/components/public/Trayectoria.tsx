@@ -58,7 +58,7 @@ export const Trayectoria = () => {
     };
 
     return (
-        <Grid container ref={ref2}>
+        <Grid container ref={ref2} sx={{ mb: responsive ? '3vh' : 0 }}>
             <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto', backgroundColor: 'background.default', overflow: 'hidden', pb: 5 }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ mt: '3vh', visibility: inView ? 'visible' : 'hidden', mb: responsive ? -3 : 0, zIndex: 5 }}>
                     <Divider sx={{
