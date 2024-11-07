@@ -174,7 +174,7 @@ export const initValuesFormJornadas: RegistFormInterface = { //!IMPORTANT CHANGE
     },
     t2: {
         checked: false,
-        name: 'taller2'
+        name: 'Uso de ROTEM'
     },
     t3: {
         checked: false,
@@ -234,6 +234,10 @@ export const talleresFiltros = [ //!IMPORTANT update every year - doesn't affect
     {
         id: 1,
         nombre: 'Estrategias Integradas'
+    },
+    {
+        id: 2,
+        nombre: 'Uso de ROTEM'
     }
 ]
 

@@ -11,10 +11,11 @@ import { Dia2 } from './Dia2';
 import { Dia3 } from './Dia3';
 import TodayIcon from '@mui/icons-material/Today';
 import { useNavigate } from 'react-router-dom';
+import { chemicals2024, medicine2024 } from '../../helpers/workshopimages2024';
 
 export const Programa = () => {
     const dispatch = useDispatch();
-    const responsive: boolean = useMediaQuery("(max-width : 1050px)");
+    const responsive: boolean = useMediaQuery("(max-width : 1400px)");
     const [tab, setTab] = useState<string>('1');
     const navigate = useNavigate();
     const { ref, inView } = useInView({//regist typography
@@ -59,9 +60,18 @@ export const Programa = () => {
                         </TabList>
                         <Box sx={{ borderRadius: 3, marginTop: 2, width: '100%', height: 'auto', ml: 'auto', mr: 'auto', display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <TabPanel value="1" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
-                                    <Dia1 />
-                                </TabPanel>
+                                {
+                                    tab === '1'
+                                        ?
+                                        <TabPanel value="1" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
+                                            <Dia1 />
+                                        </TabPanel>
+                                        :
+                                        (tab === '2' && !responsive) &&
+                                        <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%', pt: 7, objectFit: 'contain' }}>
+                                            <img className='animate__animated animate__fadeIn' alt='medic1' style={{ filter: 'drop-shadow(0px 0px 5px grey)', width: 'auto', height: '700px' }} src={`data:image/jpeg;base64,${chemicals2024}`}></img>
+                                        </TabPanel>
+                                }
                             </Grid>
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center' }}>
                                 <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
@@ -69,9 +79,24 @@ export const Programa = () => {
                                 </TabPanel>
                             </Grid>
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <TabPanel value="3" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
-                                    <Dia3 />
-                                </TabPanel>
+                                {
+                                    tab === '3'
+                                        ?
+                                        <TabPanel value="3" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
+                                            <Dia3 />
+                                        </TabPanel>
+                                        :
+                                        (tab === '2' && !responsive) ?
+                                            <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%', pt: 7 }}>
+                                                <img className='animate__animated animate__fadeIn' alt='medic1' style={{ filter: 'drop-shadow(0px 0px 5px grey)', width: 'auto', height: '700px' }} src={`data:image/jpeg;base64,${medicine2024}`}></img>
+                                            </TabPanel>
+                                            : tab === '2' && responsive &&
+                                            <TabPanel value="2" sx={{ m: 0, p: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
+                                                <img alt='medic1' style={{ filter: 'drop-shadow(0px 0px 5px grey)', width: 'auto', height: '700px' }} src={`data:image/jpeg;base64,${chemicals2024}`}></img>
+                                                <img className='animate__animated animate__fadeIn' alt='medic1' style={{ filter: 'drop-shadow(0px 0px 5px grey)', width: 'auto', height: '700px', paddingTop: 20 }} src={`data:image/jpeg;base64,${medicine2024}`}></img>
+                                            </TabPanel>
+
+                                }
                             </Grid>
                         </Box>
                     </TabContext>

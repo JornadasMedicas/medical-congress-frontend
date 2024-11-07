@@ -70,7 +70,7 @@ export const Registro = () => {
             setLoading(true);
 
             const res: any = await postRegistMail(values);
-            
+
             if (res.data) {
                 setDisabled(false);
                 setLoading(false);
@@ -107,9 +107,9 @@ export const Registro = () => {
         }
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
         window.scrollTo(0, 0);
-    }, [pathname]);
+    }, [pathname]); */
 
     return (
         <Grid container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 2, mb: 2 }}>
@@ -381,7 +381,7 @@ export const Registro = () => {
                             />
                         </Grid>
                         <Grid columns={2} sx={{ mt: 0 }}>
-                            <fieldset style={{ border: '2px inset #5dadb6', borderRadius: '20px' }}>
+                            <fieldset style={{ border: '2px inset rgba(117, 186, 117, 0.9)', borderRadius: '20px' }}>
                                 <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }}>Taller Químicos</legend>
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
@@ -392,27 +392,30 @@ export const Registro = () => {
                                     /> <b>22 de Noviembre</b> - Estrategias Integradas para el Manejo del Paciente Crítico {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
                                 </Grid>
                             </fieldset>
-                            {/* <fieldset style={{ border: '2px inset #d6c09b', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
-                                <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }} >Talleres Estomatología</legend>
+                            <fieldset style={{ border: '2px inset rgba(59, 167, 248, 0.7)', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
+                                <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }} >Taller Medicina</legend>
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t2.checked}
-                                        onChange={(e) => setValues({ ...values, t2: { ...values.t2, checked: e.target.checked } })} />
-                                    <b>23 de Noviembre</b> - Complicaciones y Errores en el Tratamiento de Restauración Interproximales <br />
-                                    <Checkbox
+                                        onChange={(e) => setValues({ ...values, t2: { ...values.t2, checked: e.target.checked } })}
+                                    />
+                                    <b>22 de Noviembre</b> - Uso de ROTEM <br />
+                                    {/* <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t3.checked}
-                                        onChange={(e) => setValues({ ...values, t3: { ...values.t3, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Utilización de Distintas Técnicas Quirúrgicas en Pacientes de Labio y Paladar Hendido<br />
+                                        onChange={(e) => setValues({ ...values, t3: { ...values.t3, checked: e.target.checked } })}
+                                    /><b>24 de Noviembre</b> - Utilización de Distintas Técnicas Quirúrgicas en Pacientes de Labio y Paladar Hendido<br />
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t4.checked}
-                                        onChange={(e) => setValues({ ...values, t4: { ...values.t4, checked: e.target.checked } })} /><b>24 de Noviembre</b> - Cirugía Maxilofacial en Cuba
+                                        onChange={(e) => setValues({ ...values, t4: { ...values.t4, checked: e.target.checked } })}
+                                    /><b>24 de Noviembre</b> - Cirugía Maxilofacial en Cuba */}
                                 </Grid>
-                            </fieldset> */}
+                            </fieldset>
                         </Grid>
                         <Grid>
                             <ReCAPTCHA
