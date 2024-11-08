@@ -4,6 +4,15 @@ import { PropsFormData } from '../interfaces/IContactForm';
 import { RegistFormInterface } from '../interfaces/IRegistForm';
 import { PropsGetAssistantsFilters, PropsGetCountAssistantsFilters } from '../interfaces/IAdmin';
 
+export const getAssitantInfo = async (email: string) => {
+    try {
+        const res: AxiosResponse = await jornadasApi.get(`/api/assistants/assistantInfo`, { params: { email: email } });
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+
 export const getAssitants = async ({ ...params }: PropsGetAssistantsFilters) => {
     try {
         const res: AxiosResponse = await jornadasApi.get(`/api/assistants/total`, { params });

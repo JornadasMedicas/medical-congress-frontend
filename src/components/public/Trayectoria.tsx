@@ -13,7 +13,7 @@ import { setActiveSection } from '../../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
 import { PropsGlobalModalInterface } from '../../interfaces/IModal';
 import { openModalProps } from '../../store/slices/modal';
-import ModalGlobal from '../ui/ModalGlobal';
+import ModalTrayectoria from '../ui/ModalTrayectoria';
 
 export const Trayectoria = () => {
     const dispatch = useDispatch();
@@ -175,7 +175,7 @@ export const Trayectoria = () => {
                     <img className='animate__animated animate__fadeIn' alt='medic1' style={{ position: 'absolute', display: responsive ? 'none' : 'block', filter: 'drop-shadow(0px 0px 10px grey)', bottom: 0, right: 0, maxWidth: '55%', height: 'auto', zIndex: 0, transition: 'all 0.3s ease' }} src={`data:image/png;base64,${slide.image}`}></img>
                 </Box>
             </Grid>
-            <ModalGlobal />
+            <ModalTrayectoria />
         </Grid>
     )
 }

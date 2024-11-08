@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
-import { Box, Button, InputAdornment, TextField, useMediaQuery } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, InputAdornment, TextField, Typography, useMediaQuery } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import { globalUpdateAssistance } from '../../helpers/assistanceAlerts';
+import { getAssitantInfo } from '../../services/endpoints';
+import { PropsGetAssistantInfo, ReqAssistantInfo } from '../../interfaces/IAdmin';
+import { talleresFiltros } from '../../helpers/data';
 
 export const Asistencia = () => {
     const [moduleValues, setModuleValues] = useState({ qrdata: '', emaildata: '' });
     const [workshopValues, setWorkshopValues] = useState({ qrdata: '', emaildata: '' });
+    const [assistances, setAssistances] = useState({ emaildata: '' });
+    const [openModal, setOpenModal] = useState(false);
+    const [assistantInfo, setAssistantInfo] = useState<PropsGetAssistantInfo>();
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
 
     //congress assistance
@@ -43,7 +49,7 @@ export const Asistencia = () => {
     }
 
     useEffect(() => {
-        
+
         const updateAssistance = async () => {
             try {
                 let separated = workshopValues.qrdata.split("|").length - 1;
@@ -60,12 +66,19 @@ export const Asistencia = () => {
         updateAssistance();
     }, [workshopValues.qrdata]);
 
+    //modal
+    const getAssistant = async (e: any) => {
+        const assistant: ReqAssistantInfo = await getAssitantInfo(assistances.emaildata);
+        setAssistantInfo(assistant.data);
+        setOpenModal(true);
+    }
+
     return (
-        <Grid container className='animate__animated animate__fadeIn' rowSpacing={3} columns={12} sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Grid container className='animate__animated animate__fadeIn' rowGap={responsive ? 0 : 8.5} columns={12} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
             <Grid size={'auto'} sx={{ width: '100%' }}>
-                <fieldset style={{ border: '2px inset #d6c09b', borderRadius: '20px', width: '100%' }}>
+                <fieldset style={{ border: '2px inset #00665d', borderRadius: '20px', width: '100%' }}>
                     <legend style={{ margin: 'auto', fontSize: 24, paddingLeft: '1rem', paddingRight: '1rem' }}>
-                    <h1 className='animate__animated animate__fadeIn' style={{ fontSize: 30 }}>
+                        <h1 className='animate__animated animate__fadeIn' style={{ fontSize: 30 }}>
                             <strong style={{ color: '#b7402a' }}>C</strong>ongreso
                         </h1>
                     </legend>
@@ -131,7 +144,7 @@ export const Asistencia = () => {
                                         endIcon={<SendIcon />}
                                         variant='contained'
                                         onClick={manualAssistance}
-                                        sx={{ backgroundColor: "#ca7757", ":hover": { backgroundColor: '#b7402a' }, marginBottom: 0, marginTop: 2, marginLeft: 1, width: '95px', height: '30px' }}
+                                        sx={{ color: 'primary.main', backgroundColor: "background.default", ":hover": { backgroundColor: 'primary.main', color: "background.default" }, marginBottom: 0, marginTop: 2, marginLeft: 1, width: '95px', height: '30px' }}
                                     >
                                         Enviar
                                     </Button>
@@ -210,7 +223,7 @@ export const Asistencia = () => {
                                         endIcon={<SendIcon />}
                                         variant='contained'
                                         onClick={manualWorkshopsAssistance}
-                                        sx={{ backgroundColor: "#ca7757", ":hover": { backgroundColor: '#b7402a' }, marginBottom: 0, marginTop: 2, marginLeft: 1, width: '95px', height: '30px' }}
+                                        sx={{ color: 'primary.main', backgroundColor: "background.default", ":hover": { backgroundColor: 'primary.main', color: "background.default" }, marginBottom: 0, marginTop: 2, marginLeft: 1, width: '95px', height: '30px' }}
                                     >
                                         Enviar
                                     </Button>
@@ -220,6 +233,121 @@ export const Asistencia = () => {
                     </Grid>
                 </fieldset>
             </Grid>
+            <Grid size={'auto'} sx={{ width: '100%' }}>
+                <fieldset style={{ border: '2px inset #00665d', borderRadius: '20px', width: '100%' }}>
+                    <legend style={{ margin: 'auto', fontSize: 24, paddingLeft: '1rem', paddingRight: '1rem' }}>
+                        <h1 className='animate__animated animate__fadeIn' style={{ fontSize: 30 }}>
+                            <strong style={{ color: '#b7402a' }}>C</strong>onsultar
+                            <strong style={{ color: '#b7402a', marginLeft: 10 }}>A</strong>sistencias
+                        </h1>
+                    </legend>
+                    <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', width: '100%', mb: 5 }}>
+                        <TextField
+                            label='Captura Manual (email)'
+                            autoComplete='off'
+                            placeholder='asistente@ejemplo.com'
+                            name='email3'
+                            value={assistances.emaildata}
+                            onChange={(e: any) => setAssistances({ emaildata: e.target.value })}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <PersonAddAlt1Icon />
+                                    </InputAdornment>
+                                )
+                            }}
+                            sx={{
+                                "& label.Mui-focused": {
+                                    color: "#b7402a"
+                                },
+                                "& .MuiInput-underline:after": {
+                                    borderBottomColor: "#b7402a"
+                                },
+                                width: '250px'
+                            }}
+                            variant="standard"
+                            fullWidth
+                        />
+                        <Button
+                            disabled={assistances.emaildata === '' ? true : false}
+                            endIcon={<SendIcon />}
+                            variant='contained'
+                            onClick={(e) => getAssistant(e)}
+                            sx={{ color: 'primary.main', backgroundColor: "background.default", ":hover": { backgroundColor: 'primary.main', color: "background.default" }, marginBottom: 0, marginTop: 2, marginLeft: 1, width: '95px', height: '30px' }}
+                        >
+                            Enviar
+                        </Button>
+                    </Grid>
+                </fieldset>
+            </Grid>
+            <Dialog
+                open={openModal}
+                onClose={(e) => setOpenModal(false)}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle sx={{ fontWeight: 'bold', fontFamily: 'typography.fontFamily' }} id="alert-dialog-title">
+                    {assistantInfo?.acronimo + ' ' + assistantInfo?.nombre}
+                </DialogTitle>
+                <Divider sx={{ width: '90%', m: 'auto' }} />
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        <Typography sx={{ color: 'black', fontSize: '18px' }}>Correo: {assistantInfo?.correo}</Typography>
+                        <Typography sx={{ color: 'black', fontSize: '18px' }}>Teléfono: {assistantInfo?.tel}</Typography>
+                        <Typography sx={{ color: 'black', fontSize: '18px' }}>Categoría: {assistantInfo?.categoria}</Typography>
+                        <Typography sx={{ color: 'black', fontSize: '18px' }}>Ciudad: {assistantInfo?.ciudad}</Typography>
+                        {
+                            assistantInfo?.jrn_evento[0].modulo !== null ?
+                                <>
+                                    <Divider sx={{ width: '90%', m: 'auto', mt: 2, mb: 2 }} />
+                                    <Typography sx={{ color: 'black', fontSize: '18px' }}>Módulo: {assistantInfo?.jrn_evento[0].modulo}</Typography>
+                                    <Typography sx={{ color: 'black', fontSize: '18px' }}>Día 1: {assistantInfo?.jrn_evento[0].isAssistDay1 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                                    <Typography sx={{ color: 'black', fontSize: '18px' }}>Día 2: {assistantInfo?.jrn_evento[0].isAssistDay2 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                                    <Typography sx={{ color: 'black', fontSize: '18px' }}>Día 3: {assistantInfo?.jrn_evento[0].isAssistDay3 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                                </>
+                                :
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Módulo: NINGUNO</Typography>
+                        }
+                        {
+                            assistantInfo?.jrn_evento[0].isRegisteredT1 &&
+                            <>
+                                <Divider sx={{ width: '90%', m: 'auto', mt: 2, mb: 2 }} />
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Taller: {talleresFiltros.filter((item) => item.id === 1)[0].nombre}</Typography>
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Asistencia: {assistantInfo?.jrn_evento[0].isAssistT1 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                            </>
+                        }
+                        {
+                            assistantInfo?.jrn_evento[0].isRegisteredT2 &&
+                            <>
+                                <Divider sx={{ width: '90%', m: 'auto', mt: 2, mb: 2 }} />
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Taller: {talleresFiltros.filter((item) => item.id === 2)[0].nombre}</Typography>
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Asistencia: {assistantInfo?.jrn_evento[0].isAssistT2 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                            </>
+                        }
+                        {
+                            assistantInfo?.jrn_evento[0].isRegisteredT3 &&
+                            <>
+                                <Divider sx={{ width: '90%', m: 'auto', mt: 2, mb: 2 }} />
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Taller: {talleresFiltros.filter((item) => item.id === 3)[0].nombre}</Typography>
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Asistencia: {assistantInfo?.jrn_evento[0].isAssistT3 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                            </>
+                        }
+                        {
+                            assistantInfo?.jrn_evento[0].isRegisteredT4 &&
+                            <>
+                                <Divider sx={{ width: '90%', m: 'auto', mt: 2, mb: 2 }} />
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Taller: {talleresFiltros.filter((item) => item.id === 4)[0].nombre}</Typography>
+                                <Typography sx={{ color: 'black', fontSize: '18px' }}>Asistencia: {assistantInfo?.jrn_evento[0].isAssistT4 ? 'Asistió' : 'Sin Asistir'}</Typography>
+                            </>
+                        }
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={(e) => setOpenModal(false)} sx={{
+                        color: 'primary.main', backgroundColor: "background.default", ":hover": { backgroundColor: 'primary.main', color: "background.default", boxShadow: 3 }
+                    }}>Cerrar</Button>
+                </DialogActions>
+            </Dialog>
         </Grid>
     )
 }

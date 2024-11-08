@@ -107,9 +107,9 @@ export const Registro = () => {
         }
     }
 
-    /* useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0, 0);
-    }, [pathname]); */
+    }, [pathname]);
 
     return (
         <Grid container sx={{ pt: responsive ? `${navBarHeigthResponsive}px` : `${navBarHeigth}px`, mt: 2, mb: 2 }}>

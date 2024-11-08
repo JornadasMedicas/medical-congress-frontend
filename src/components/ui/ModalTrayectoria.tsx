@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PropsDatModal, ReduxModalSelector } from '../../interfaces/IModal';
 import { closeModalProps } from '../../store/slices/modal';
 
-const ModalGlobal = () => {
+const ModalTrayectoria = () => {
     const dispatch = useDispatch();
     const { props } = useSelector((state: ReduxModalSelector) => state.modal);
     const responsive: boolean = useMediaQuery("(max-width : 1020px)");
@@ -16,7 +16,6 @@ const ModalGlobal = () => {
 
     useEffect(() => {
         if (props.args != null) {
-            console.log(props);
 
             const modules = props.args.modules.filter((item: PropsDatModal) => {
                 return item.name === props.name;
@@ -65,4 +64,4 @@ const ModalGlobal = () => {
     )
 }
 
-export default ModalGlobal;
+export default ModalTrayectoria;

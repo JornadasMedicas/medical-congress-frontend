@@ -24,9 +24,6 @@ export const Footer = () => {
                             <img src="https://i.imgur.com/KBthrFn.png" alt="CAE" width="auto" height="43px" style={{ marginTop: 3 }} />
                         </Grid>
                     </Grid>
-                    {/* <Grid container sx={{ justifyContent: 'center', textAlign: 'center', mt: { md: 1 } }}>
-                        <Typography fontWeight={'bold'} fontSize={'15px'}>&copy; 2024 Gobierno de Veracruz. Todos los derechos reservados.</Typography>
-                    </Grid> */}
                 </Container>
             </Grid>
         </>
