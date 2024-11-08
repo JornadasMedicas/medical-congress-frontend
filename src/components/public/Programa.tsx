@@ -51,37 +51,37 @@ export const Programa = () => {
                     </Divider>
                 </Box>
             </Grid>
-            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 2 }}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 4 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.05)', transition: 'all 0.3s ease' } }}>
                     <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/bEcUpGw.png'></img>
                 </Box>
-                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/pct65tj6ee72z2r74yl4f/DIPTICO-ENFERMERIA-2024.pdf?rlkey=lha4qtjay3elz1m3f94yjlkoy&st=s959irbp&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO ENFERMERÍA ORIGINAL
                     </Button>
                 </Box>
             </Grid>
-            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 2 }}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 4 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.05)', transition: 'all 0.3s ease' } }}>
                     <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/4dJpS00.png'></img>
                 </Box>
-                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/oh9hdibl4ue2pw9ulf09n/DIPTICO-Odontolog-a-2024.pdf?rlkey=z2s8ps0d759axcxv39081yzc6&st=vjhu28az&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO ESTOMATOLOGÍA ORIGINAL
                     </Button>
                 </Box>
             </Grid>
-            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 2 }}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 4 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.05)', transition: 'all 0.3s ease' } }}>
                     <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/1W8eV4H.png'></img>
                 </Box>
-                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/mzq0vwe8zpu1uvfn16221/tiptico-de-medicina.pdf?rlkey=64mybsvcs34sipszo4w6jagfj&st=1ebd3t2y&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO MEDICINA ORIGINAL
                     </Button>
                 </Box>
             </Grid>
-            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 2 }}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
                     <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/19fuVyp.png'></img>
                 </Box>
@@ -91,7 +91,7 @@ export const Programa = () => {
                     </Button>
                 </Box>
             </Grid>
-            <Grid size={responsive ? 12 : 4}>
+            <Grid  className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0}}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
                     <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src={`data:image/jpeg;base64,${chemicals2024}`}></img>
                 </Box>
@@ -101,9 +101,9 @@ export const Programa = () => {
                     </Button>
                 </Box>
             </Grid>
-            <Grid size={responsive ? 12 : 4}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0}}>
                 <Box className={'animate__animated animate__fadeInUp'} sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
-                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: '700px' }} src={`data:image/jpeg;base64,${medicine2024}`}></img>
+                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src={`data:image/jpeg;base64,${medicine2024}`}></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/npq80r5p3koq1g0ryi777/TALLER_MEDICINA2024.jpeg?rlkey=hvpffpm0y7t9vdge24q3mi830&st=2vm6cwg8&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
