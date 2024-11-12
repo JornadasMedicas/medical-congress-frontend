@@ -386,10 +386,10 @@ export const Registro = () => {
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
                                     <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
-                                        disabled={disableCheckboxes}
+                                        disabled={true}
                                         checked={values.t1.checked}
                                         onChange={(e) => setValues({ ...values, t1: { ...values.t1, checked: e.target.checked } })}
-                                    /> <b>22 de Noviembre</b> - Estrategias Integradas para el Manejo del Paciente Crítico {/* - <b style={{ color: 'red' }}>cupos agotados</b> */}
+                                    /> <b>22 de Noviembre</b> - Estrategias Integradas para el Manejo del Paciente Crítico - <b style={{ color: 'red' }}>cupos agotados</b>
                                 </Grid>
                             </fieldset>
                             <fieldset style={{ border: '2px inset rgba(59, 167, 248, 0.7)', borderRadius: '20px', marginTop: '15px', width: '100%' }}>

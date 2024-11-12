@@ -11,7 +11,6 @@ import { Dia2 } from './Dia2';
 import { Dia3 } from './Dia3';
 import TodayIcon from '@mui/icons-material/Today';
 import { useNavigate } from 'react-router-dom';
-import { chemicals2024, medicine2024 } from '../../helpers/workshopimages2024';
 import DownloadIcon from '@mui/icons-material/Download';
 
 export const Programa = () => {
@@ -53,30 +52,30 @@ export const Programa = () => {
             </Grid>
             <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 4 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.05)', transition: 'all 0.3s ease' } }}>
-                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/bEcUpGw.png'></img>
+                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/8eLVUG2.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/pct65tj6ee72z2r74yl4f/DIPTICO-ENFERMERIA-2024.pdf?rlkey=lha4qtjay3elz1m3f94yjlkoy&st=s959irbp&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
+                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/m8xo31q9vfdgdcla1ihka/DIPTICO-ENFERMERIA-2024.pdf?rlkey=ao69g7sxvlrz6mol85p09992l&st=2zgq9t1f&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO ENFERMERÍA ORIGINAL
                     </Button>
                 </Box>
             </Grid>
             <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 4 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.05)', transition: 'all 0.3s ease' } }}>
-                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/4dJpS00.png'></img>
+                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/IVWviwM.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/oh9hdibl4ue2pw9ulf09n/DIPTICO-Odontolog-a-2024.pdf?rlkey=z2s8ps0d759axcxv39081yzc6&st=vjhu28az&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
+                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/xyac2z7i83hgqu9w22bk2/DIPTICO-Odontolog-a-2024.pdf?rlkey=tmvrvoppx2oc1xvx2u8dgwjdc&st=fvw01poa&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO ESTOMATOLOGÍA ORIGINAL
                     </Button>
                 </Box>
             </Grid>
             <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: 4 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.05)', transition: 'all 0.3s ease' } }}>
-                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/1W8eV4H.png'></img>
+                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '95%', height: 'auto' }} src='https://i.imgur.com/OlCBqGK.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/mzq0vwe8zpu1uvfn16221/tiptico-de-medicina.pdf?rlkey=64mybsvcs34sipszo4w6jagfj&st=1ebd3t2y&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
+                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/0svpr11lp88r2651f78ro/tiptico-de-medicina-final.pdf?rlkey=05zm5r2el0cs8gjc9fib1ula3&st=wcprlloj&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO MEDICINA ORIGINAL
                     </Button>
                 </Box>
@@ -86,27 +85,27 @@ export const Programa = () => {
                     <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/19fuVyp.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/bj0ueqtpeqrpffafney8g/DIPTICO-quimicos-2024.pdf?rlkey=g4o3qfc7i6zwvb9j1i4og76hh&st=o0yigxr3&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
+                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/1ek86jcy0vesgl5yghesu/DIPTICO-quimicos-2024.pdf?rlkey=z6a26dbqe9swmvm94ep8x2i7z&st=g22x1umu&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR DÍPTICO QUÍMICOS ORIGINAL
                     </Button>
                 </Box>
             </Grid>
-            <Grid  className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0}}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0 }}>
                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
-                    <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src={`data:image/jpeg;base64,${chemicals2024}`}></img>
+                    <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/q2xN69Y.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/pi39v21oduz7zqir3x0d6/TALLER_QUIMICOS2024.jpeg?rlkey=jpmuu8wolxibczv8xn3g88gsn&st=y1qf281m&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
+                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/x3a9f4a1qm8gq5beqdo8v/talleres-quimicos-sin-QR.pdf?rlkey=rxnslvenqn8esvgsifdw2vw2h&st=pxd9hsmq&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR PÓSTER TALLER QUÍMICOS ORIGINAL
                     </Button>
                 </Box>
             </Grid>
-            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0}}>
+            <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0 }}>
                 <Box className={'animate__animated animate__fadeInUp'} sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
-                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src={`data:image/jpeg;base64,${medicine2024}`}></img>
+                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/xKBDfjV.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/npq80r5p3koq1g0ryi777/TALLER_MEDICINA2024.jpeg?rlkey=hvpffpm0y7t9vdge24q3mi830&st=2vm6cwg8&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
+                    <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/htvnqvo109ljxsk6g4dly/talleres-de-medicina-sin-QR.pdf?rlkey=7ap19coy2kkcon3qgpaqqyzjh&st=d48538am&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
                         DESCARGAR PÓSTER TALLER MEDICINA ORIGINAL
                     </Button>
                 </Box>
