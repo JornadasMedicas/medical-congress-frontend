@@ -25,7 +25,7 @@ export const Registro = () => {
     const [values, setValues] = useState<RegistFormInterface>(initValuesFormJornadas);
     const [errors, setErrors] = useState<JornadasValuesInterface>(initValuesFormJornadasErrors);
     const [loading, setLoading] = useState<boolean>(false);
-    let disableCheckboxes: boolean = false;
+    let disableCheckboxes: boolean = true;
     const { ref, inView } = useInView({//regist typography
         triggerOnce: false,
         threshold: 0.1
@@ -384,24 +384,25 @@ export const Registro = () => {
                             <fieldset style={{ border: '2px inset rgba(117, 186, 117, 0.9)', borderRadius: '20px' }}>
                                 <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }}>Taller Químicos</legend>
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
-                                    <Checkbox
+                                    {/* <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
-                                        disabled={true}
+                                        disabled={disableCheckboxes}
                                         checked={values.t1.checked}
                                         onChange={(e) => setValues({ ...values, t1: { ...values.t1, checked: e.target.checked } })}
-                                    /> <b>22 de Noviembre</b> - Estrategias Integradas para el Manejo del Paciente Crítico - <b style={{ color: 'red' }}>cupos agotados</b>
+                                    />  */}
+                                    <b>22 de Noviembre</b> - Estrategias Integradas para el Manejo del Paciente Crítico - <b style={{ color: 'red' }}>cupos agotados</b>
                                 </Grid>
                             </fieldset>
                             <fieldset style={{ border: '2px inset rgba(59, 167, 248, 0.7)', borderRadius: '20px', marginTop: '15px', width: '100%' }}>
                                 <legend style={{ margin: 'auto', fontSize: responsive ? 24 : 25, paddingLeft: '1rem', paddingRight: '1rem' }} >Taller Medicina</legend>
                                 <Grid sx={{ textAlign: 'left', paddingLeft: 2, paddingBottom: 2 }}>
-                                    <Checkbox
+                                    {/* <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
                                         checked={values.t2.checked}
                                         onChange={(e) => setValues({ ...values, t2: { ...values.t2, checked: e.target.checked } })}
-                                    />
-                                    <b>22 de Noviembre</b> - Uso de ROTEM <br />
+                                    /> */}
+                                    <b>22 de Noviembre</b> - Uso de ROTEM - <b style={{ color: 'red' }}>cupos agotados</b>
                                     {/* <Checkbox
                                         sx={{ '&.Mui-checked': { color: '#2a7dd3' } }}
                                         disabled={disableCheckboxes}
