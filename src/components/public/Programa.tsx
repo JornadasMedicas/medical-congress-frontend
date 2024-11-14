@@ -42,10 +42,10 @@ export const Programa = () => {
     };
 
     return (
-        <Grid ref={ref} container sx={{ pt: 1, mb: 2, display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
+        <Grid ref={ref} container sx={{ pt: 2, mb: 2, display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
             <Grid size={12} ref={ref2} sx={{ mb: 2 }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden', mb: 2, mt: 2 }}>
-                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: 'secondary.main', width: responsive ? '80%' : '50%', m: 'auto' }}>
+                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '33px', color: 'secondary.main', width: responsive ? '80%' : '50%', m: 'auto' }}>
                         PROGRAMA 2024
                     </Divider>
                 </Box>

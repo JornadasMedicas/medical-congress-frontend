@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 const navItem = [
     { name: 'Inicio', pathTo: 'carousel' },
     { name: 'Programa', pathTo: 'program' },
+    { name: 'Sedes', pathTo: 'location' },
     { name: 'Contacto', pathTo: 'contact' },
-    { name: 'Historia', pathTo: 'career' },
     { name: 'Registro', pathTo: 'register' }
 ]
 

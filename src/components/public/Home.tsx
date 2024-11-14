@@ -6,6 +6,7 @@ import { Inicio } from './Inicio';
 import { Contacto } from './Contacto';
 import { Stack, useMediaQuery } from '@mui/material';
 import { Programa } from './Programa';
+import { Sedes } from './Sedes';
 
 export const navBarHeigth: number = 64;
 export const navBarHeigthResponsive: number = 54;
@@ -37,11 +38,11 @@ export const Home = () => {
 			<section id='program'>
 				<Programa />
 			</section>
+			<section id='location'>
+				<Sedes />
+			</section>
 			<section id='contact'>
 				<Contacto />
-			</section>
-			<section id='career'>
-				<Trayectoria />
 			</section>
 		</Stack>
 	)

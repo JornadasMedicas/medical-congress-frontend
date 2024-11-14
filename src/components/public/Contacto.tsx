@@ -88,7 +88,7 @@ export const Contacto = () => {
             </Grid>
             <Grid size={responsive ? 12 : 6} sx={{ textAlign: 'center', height: 'auto' }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ mt: '4vh', visibility: inView ? 'visible' : 'hidden' }}>
-                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '30px', color: 'secondary.main', width: responsive ? '80%' : '50%', m: 'auto' }}>
+                    <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '33px', color: 'secondary.main', width: responsive ? '80%' : '50%', m: 'auto' }}>
                         CONTACTO
                     </Divider>
                 </Box>

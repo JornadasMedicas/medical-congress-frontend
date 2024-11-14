@@ -42,7 +42,7 @@ export const Inicio = () => {
             </Grid>
             <Grid size={12} sx={{ textAlign: 'center', minHeight: '45vh', alignItems: 'center', justifyContent: 'center' }}>
                 <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden' }}>
-                    <Typography fontFamily={'sans-serif'} fontWeight={700} sx={{ color: 'secondary.main', fontSize: responsive ? '25px' : '30px' }}>
+                    <Typography fontFamily={'sans-serif'} fontWeight={700} sx={{ color: 'secondary.main', fontSize: responsive ? '25px' : '33px' }}>
                         ¡BIENVENIDOS A LAS JORNADAS MÉDICAS!
                     </Typography>
                 </Box>
