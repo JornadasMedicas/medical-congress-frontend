@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Grid from '@mui/material/Grid2';
-import { Button, Divider, Tab, useMediaQuery } from '@mui/material';
+import { Button, Divider, Tab, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
@@ -91,8 +91,8 @@ export const Programa = () => {
                 </Box>
             </Grid>
             <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0 }}>
-                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
-                    <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/q2xN69Y.png'></img>
+                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease', position: 'relative' } }}>
+                    <img alt='chemicals2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px', zIndex: 0 }} src='https://i.imgur.com/EUrzWZO.jpeg'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/x3a9f4a1qm8gq5beqdo8v/talleres-quimicos-sin-QR.pdf?rlkey=rxnslvenqn8esvgsifdw2vw2h&st=pxd9hsmq&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>
@@ -102,7 +102,7 @@ export const Programa = () => {
             </Grid>
             <Grid className={'animate__animated animate__fadeInUp'} size={responsive ? 12 : 4} sx={{ mb: responsive ? 4 : 0 }}>
                 <Box className={'animate__animated animate__fadeInUp'} sx={{ mb: 2, display: 'flex', justifyContent: 'center', cursor: 'pointer', '&:hover img': { transform: 'scale(1.03)', transition: 'all 0.3s ease' } }}>
-                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/xKBDfjV.png'></img>
+                    <img alt='medicine2024' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: responsive ? '95%' : 'auto', height: responsive ? 'auto' : '700px' }} src='https://i.imgur.com/26SjVDN.png'></img>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button onClick={(e) => onDownload(e, "https://www.dropbox.com/scl/fi/htvnqvo109ljxsk6g4dly/talleres-de-medicina-sin-QR.pdf?rlkey=7ap19coy2kkcon3qgpaqqyzjh&st=d48538am&dl=1")} variant="contained" endIcon={<DownloadIcon />} sx={{ backgroundColor: 'background.default', color: 'primary.main', ":hover": { backgroundColor: 'primary.main', color: 'background.default' }, width: responsive ? '95%' : '75%' }}>

@@ -95,17 +95,30 @@ export const Sedes = () => {
     }, []);
 
     return (
-        <Grid container ref={ref} sx={{ mb: responsive ? '3vh' : 0, mt: 2, display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
-            <Grid size={12} ref={ref2} sx={{ mb: responsive ? 0 : 4 }}>
-                <Box className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden', mb: 2, mt: 2 }}>
+        <Grid container ref={ref} sx={{ display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
+            <Grid size={12} ref={ref2} sx={{ mb: responsive ? 2 : 0 }}>
+                <Box className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden', mb: 2, mt: 4 }}>
                     <Divider sx={{ fontFamily: 'sans-serif', fontWeight: 700, fontSize: responsive ? '25px' : '33px', color: 'secondary.main', width: responsive ? '80%' : '30%', m: 'auto' }}>
                         SEDES
                     </Divider>
                 </Box>
             </Grid>
-            <Grid size={responsive ? 12 : 6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? '3vh' : '7vh' }}>
-                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: responsive ? 3 : 5 }}>
+            <Grid size={responsive ? 12 : 6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? '4vh' : '0vh' }}>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
                     <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'}>CONGRESO</Typography>
+                </Grid>
+                <Divider sx={{ mb: 3, width: '50%', ml: 'auto', mr: 'auto' }}></Divider>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 1 }}>
+                    <Typography fontSize={responsive ? '18px' : '20px'} fontWeight={'bold'}>DIRECCIÓN</Typography>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '20px'}>Av. Libertad #84, Centro, Banderilla, Veracruz</Typography>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/BtOZDGt.jpeg'></img>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/hpJYJhx.jpeg'></img>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <Box
@@ -120,9 +133,22 @@ export const Sedes = () => {
                     />
                 </Grid>
             </Grid>
-            <Grid size={responsive ? 12 : 6} ref={ref2} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? 0 : '7vh' }}>
-                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: responsive ? 3 : 5 }}>
+            <Grid size={responsive ? 12 : 6} sx={{ display: 'flex', justifyContent: 'left', flexDirection: 'column' }}>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
                     <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'}>TALLERES</Typography>
+                </Grid>
+                <Divider sx={{ mb: 3, width: '50%', ml: 'auto', mr: 'auto' }}></Divider>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 1 }}>
+                    <Typography fontSize={responsive ? '18px' : '20px'} fontWeight={'bold'}>DIRECCIÓN</Typography>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '20px'}>Av. Miguel Alemán #310 Col. Laderas de Macuiltepetl, Xalapa, Veracruz</Typography>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/wY62iKD.jpeg'></img>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/ZyTpO7D.jpeg'></img>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <Box
