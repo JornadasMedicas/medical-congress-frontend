@@ -40,7 +40,7 @@ export const Sedes = () => {
             style: 'mapbox://styles/mapbox/streets-v11', // Estilo del mapa
             center: [-96.93671537793244, 19.588090811612958], // starting position [lng, lat]
             zoom: 15, // Nivel de zoom inicial
-            hash: true
+            hash: false
         });
 
         // Agregar un marcador (opcional)
@@ -71,7 +71,8 @@ export const Sedes = () => {
             container: mapContainer2.current, // Referencia al div del contenedor
             style: 'mapbox://styles/mapbox/streets-v11', // Estilo del mapa
             center: [-96.91924225652667, 19.542849287196848], // starting position [lng, lat]
-            zoom: 15, // Nivel de zoom inicial
+            zoom: 15, // Nivel de zoom inicial,
+            hash: false
         });
 
         // Agregar un marcador (opcional)
@@ -115,10 +116,10 @@ export const Sedes = () => {
                     <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '20px'}>Av. Libertad #84, Centro, Banderilla, Veracruz</Typography>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/BtOZDGt.jpeg'></img>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/wY62iKD.jpeg'></img>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/hpJYJhx.jpeg'></img>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/ZyTpO7D.jpeg'></img>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <Box
@@ -145,10 +146,10 @@ export const Sedes = () => {
                     <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '20px'}>Av. Miguel Alemán #310 Col. Laderas de Macuiltepetl, Xalapa, Veracruz</Typography>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/wY62iKD.jpeg'></img>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/BtOZDGt.jpeg'></img>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/ZyTpO7D.jpeg'></img>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/hpJYJhx.jpeg'></img>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <Box
