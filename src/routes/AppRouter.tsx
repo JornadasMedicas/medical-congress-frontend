@@ -2,8 +2,8 @@ import React from 'react'
 import {
     Navigate,
     Route,
-    HashRouter as Router, Routes,
-    /* BrowserRouter as Router, Routes, */
+    /* HashRouter as Router, Routes, */
+    BrowserRouter as Router, Routes,
 } from "react-router-dom"
 import { DashboardRoutes } from './DashboardRoutes'
 import { Home } from '../components/public/Home'

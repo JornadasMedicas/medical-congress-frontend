@@ -122,7 +122,7 @@ export const categorias = [
 export const modulos = [ //!IMPORTANT update every year
     'Medicina',
     'Enfermería',
-    'Químicos',
+    'Químicos - CUPOS AGOTADOS',
     'Estomatología'
 ]
 
