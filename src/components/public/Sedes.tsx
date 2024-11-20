@@ -14,6 +14,7 @@ export const Sedes = () => {
     const navigate = useNavigate();
     const mapContainer = useRef(''); // Ref para el contenedor del mapa
     const mapContainer2 = useRef(''); // Ref para el contenedor del mapa
+    const mapContainer3 = useRef(''); // Ref para el contenedor del mapa
 
     const { ref, inView } = useInView({//regist typography
         triggerOnce: false,
@@ -95,6 +96,38 @@ export const Sedes = () => {
         return () => map.remove();
     }, []);
 
+    useEffect(() => {
+        // Configura Mapbox GL con tu token de acceso
+        mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX_KEY}`;
+
+        const map = new mapboxgl.Map({
+            container: mapContainer3.current, // Referencia al div del contenedor
+            style: 'mapbox://styles/mapbox/streets-v11', // Estilo del mapa
+            center: [-96.93588130332994, 19.551993716336828], // starting position [lng, lat]
+            zoom: 15, // Nivel de zoom inicial,
+            hash: false
+        });
+
+        // Agregar un marcador (opcional)
+        const marker = new mapboxgl.Marker({
+            color: 'red', // Cambiar color del marcador (puede ser un color hex)
+        })
+            .setLngLat([-96.93588130332994, 19.551993716336828])
+            .addTo(map);
+
+        const markerElement = marker.getElement();
+        markerElement.style.cursor = 'pointer';
+
+        markerElement.addEventListener('click', () => {
+            window.open('https://www.google.com.mx/maps/place/Centro+de+Alta+Especialidad+%22Dr.+Rafael+Lucio%22/@19.5517662,-96.9384562,17z/data=!3m1!4b1!4m6!3m5!1s0x85db2e16cb33d43b:0xef08a9e7531a4f7d!8m2!3d19.5517612!4d-96.9358813!16s%2Fg%2F1yl452rl7?entry=ttu&g_ep=EgoyMDI0MTExOC4wIKXMDSoASAFQAw%3D%3D', '_blank')
+        });
+
+        map.addControl(new mapboxgl.FullscreenControl());
+
+        // Limpieza cuando el componente se desmonte
+        return () => map.remove();
+    }, []);
+
     return (
         <Grid container ref={ref} sx={{ display: 'flex', flexDirection: responsive ? 'column' : 'row' }}>
             <Grid size={12} ref={ref2} sx={{ mb: responsive ? 2 : 0 }}>
@@ -104,16 +137,16 @@ export const Sedes = () => {
                     </Divider>
                 </Box>
             </Grid>
-            <Grid size={responsive ? 12 : 6} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? '4vh' : '0vh' }}>
+            <Grid size={responsive ? 12 : 4} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? '4vh' : '0vh' }}>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'}>CONGRESO</Typography>
+                    <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'} sx={{ textAlign: 'center' }}>CONGRESO MEDICINA Y ENFERMERÍA</Typography>
                 </Grid>
                 <Divider sx={{ mb: 3, width: '50%', ml: 'auto', mr: 'auto' }}></Divider>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 1 }}>
                     <Typography fontSize={responsive ? '18px' : '20px'} fontWeight={'bold'}>DIRECCIÓN</Typography>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '20px'}>Av. Libertad #84, Centro, Banderilla, Veracruz</Typography>
+                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '19px'}>Av. Libertad #84, Centro, Banderilla, Ver.</Typography>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
                     <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/wY62iKD.jpeg'></img>
@@ -134,16 +167,16 @@ export const Sedes = () => {
                     />
                 </Grid>
             </Grid>
-            <Grid size={responsive ? 12 : 6} sx={{ display: 'flex', justifyContent: 'left', flexDirection: 'column' }}>
+            <Grid size={responsive ? 12 : 4} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? '4vh' : '0vh' }}>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'}>TALLERES</Typography>
+                    <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'}>TALLERES </Typography>
                 </Grid>
                 <Divider sx={{ mb: 3, width: '50%', ml: 'auto', mr: 'auto' }}></Divider>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 1 }}>
                     <Typography fontSize={responsive ? '18px' : '20px'} fontWeight={'bold'}>DIRECCIÓN</Typography>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '20px'}>Av. Miguel Alemán #310 Col. Laderas de Macuiltepetl, Xalapa, Veracruz</Typography>
+                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '19px'}>Av. Miguel Alemán #310 Col. Laderas de Macuiltepetl, Xalapa, Ver.</Typography>
                 </Grid>
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
                     <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/BtOZDGt.jpeg'></img>
@@ -154,6 +187,36 @@ export const Sedes = () => {
                 <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <Box
                         ref={mapContainer2}
+                        sx={{
+                            width: '90%',
+                            height: '60vh',
+                            borderRadius: 2,
+                            boxShadow: 3,
+                            overflow: 'hidden'
+                        }}
+                    />
+                </Grid>
+            </Grid>
+            <Grid size={responsive ? 12 : 4} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', mb: responsive ? '4vh' : '0vh' }}>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <Typography fontSize={responsive ? '20px' : '22px'} fontWeight={'bold'} sx={{ textAlign: 'center' }}>CONGRESO QUÍMICOS Y ESTOMATOLOGÍA</Typography>
+                </Grid>
+                <Divider sx={{ mb: 3, width: '50%', ml: 'auto', mr: 'auto' }}></Divider>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 1 }}>
+                    <Typography fontSize={responsive ? '18px' : '20px'} fontWeight={'bold'}>DIRECCIÓN</Typography>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <Typography sx={{ textAlign: 'center' }} fontSize={responsive ? '17px' : '19px'}>Av. Adolfo Ruiz Cortines 2903, Unidad Magisterial, Xalapa, Ver.</Typography>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/Of5RB5i.jpeg'></img>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <img alt='calera1' style={{ transition: 'all 0.3s ease', filter: 'drop-shadow(0px 0px 5px grey)', width: '90%', height: 'auto' }} src='https://i.imgur.com/U239yoJ.png'></img>
+                </Grid>
+                <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                    <Box
+                        ref={mapContainer3}
                         sx={{
                             width: '90%',
                             height: '60vh',
