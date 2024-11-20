@@ -353,7 +353,7 @@ export const Registro = () => {
                                 value={values.modulo}
                                 onChange={(e, value) => setValues({ ...values, modulo: value })}
                                 renderOption={(props, options) => (
-                                    <MenuItem disabled={options.startsWith('Químicos') ? true : false} {...props}>
+                                    <MenuItem disabled={options.startsWith('Químicos') || options.startsWith('Estomatología')  ? true : false} {...props}>
                                         <ListItemText primary={options} />
                                     </MenuItem>
                                 )}

@@ -123,7 +123,7 @@ export const modulos = [ //!IMPORTANT update every year
     'Medicina',
     'Enfermería',
     'Químicos - CUPOS AGOTADOS',
-    'Estomatología'
+    'Estomatología - CUPOS AGOTADOS'
 ]
 
 export const text: any = (values: RegistFormInterface) => {
