@@ -11,7 +11,7 @@ const navItem = [
     { name: 'Programa', pathTo: 'program' },
     { name: 'Sedes', pathTo: 'location' },
     { name: 'Contacto', pathTo: 'contact' },
-    { name: 'Registro', pathTo: 'register' }
+    /* { name: 'Registro', pathTo: 'register' } */
 ]
 
 export const Navbar = () => {
