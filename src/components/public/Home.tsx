@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
-import '../../App.css'
-import { Trayectoria } from './Trayectoria';
+import '../../App.css';
 import { Inicio } from './Inicio';
 import { Contacto } from './Contacto';
 import { Stack, useMediaQuery } from '@mui/material';

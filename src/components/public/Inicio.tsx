@@ -1,12 +1,12 @@
 import React from 'react'
 import Grid from '@mui/material/Grid2';
-import Carousel from 'react-material-ui-carousel';
 import { ItemHomeCarousel, items } from './ItemHomeCarousel';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
 import { setActiveSection } from '../../store/slices/sections';
 import { useNavigate } from 'react-router-dom';
+import { Carousel } from './Carousel';
 
 export const Inicio = () => {
     const dispatch = useDispatch();
@@ -27,26 +27,22 @@ export const Inicio = () => {
     return (
         <Grid container columns={12} sx={{ display: 'flex', minHeight: responsive ? 'auto' : '100vh', flexDirection: 'column' }}>
             <Grid size={12} sx={{ textAlign: 'center', minHeight: responsive ? '46.5vh' : '45vh' }}>
-                <Carousel
-                    navButtonsAlwaysInvisible
-                    animation='fade'
-                    navButtonsWrapperProps={{
-                        style: {
-                            bottom: '0',
-                            top: 'unset'
-                        }
-                    }}
-                >
-                    {items.map((item, i) => <ItemHomeCarousel key={i} item={item} />)}
-                </Carousel>
+                <Carousel />
             </Grid>
-            <Grid size={12} sx={{ textAlign: 'center', minHeight: '45vh', alignItems: 'center', justifyContent: 'center' }}>
-                <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{ visibility: inView ? 'visible' : 'hidden' }}>
-                    <Typography fontFamily={'sans-serif'} fontWeight={700} sx={{ color: 'secondary.main', fontSize: responsive ? '25px' : '33px' }}>
+            <Grid size={12} sx={{ display: 'flex', textAlign: 'center', minHeight: '10vh', alignItems: 'start', justifyContent: 'center' }}>
+                <Box ref={ref} className={inView ? 'animate__animated animate__fadeInUp' : ''} sx={{
+                    visibility: inView ? 'visible' : 'hidden',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    width: 'fit-content'
+                }}>
+                    <Typography fontFamily={'sans-serif'} fontWeight={700} sx={{ color: 'secondary.main', fontSize: responsive ? '25px' : '33px', pl: responsive ? 1 : 0, pr: responsive ? 1 : 0 }}>
                         ¡BIENVENIDOS A LAS JORNADAS MÉDICAS!
                     </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', padding: responsive ? 4 : 8, minHeight: '45vh', alignItems: 'center' }}>
+            </Grid>
+            <Grid size={12} sx={{ display: 'flex', minHeight: '45vh' }}>
+                <Box sx={{ display: 'flex', pl: responsive ? 4 : 8, pr: responsive ? 4 : 8, pt: responsive ? 2 : 0, minHeight: '45vh' }}>
                     <Typography fontFamily={'sans-serif'} fontWeight={500} textAlign={'justify'} letterSpacing={1} lineHeight={responsive ? 'auto' : 2} sx={{ color: 'secondary.main', fontSize: responsive ? '18px' : '20px' }}>
                         Es un honor darles la bienvenida a este congreso tan especial, donde celebramos 35 años de logros, colaboración y avances en el campo de la salud de Veracruz. Este aniversario no solo marca un hito en nuestra historia, sino que también nos brinda la oportunidad de reflexionar sobre nuestro recorrido y mirar hacia el futuro con renovada esperanza y determinación.
                         A lo largo de estos 35 años, hemos enfrentado numerosos desafíos, pero también hemos alcanzado metas significativas gracias al esfuerzo y dedicación de cada uno de ustedes. Este congreso es un testimonio de nuestro compromiso continuo con la excelencia y la innovación.
@@ -56,6 +52,6 @@ export const Inicio = () => {
                     </Typography>
                 </Box>
             </Grid>
-        </Grid>
+        </Grid >
     )
 }
