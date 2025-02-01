@@ -1,10 +1,9 @@
 import React from 'react'
 import Grid from '@mui/material/Grid2';
-import { Container, useMediaQuery } from '@mui/material';
-import { gob_ver, logoIMSS, marcaVera } from '../../helpers/images';
+import { Container } from '@mui/material';
+import { gob_ver, logoIMSS } from '../../helpers/images';
 
 export const Footer = () => {
-    const responsive: boolean = useMediaQuery("(max-width : 1050px)");
 
     return (
         <>

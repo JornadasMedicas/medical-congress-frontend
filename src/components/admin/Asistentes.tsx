@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid2';
 import { Autocomplete, Box, Card, FormControl, InputLabel, Paper, Select, TableContainer, TextField, Typography, useMediaQuery } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
@@ -19,6 +19,7 @@ export const Asistentes = () => {
     const [totalRows, setTotalRows] = useState<number>();
     const [rows, setRows] = useState<any>();
     const [options, setOptions] = useState<ReqAssistantsAutocompleteInterface[]>([]);
+
 
     const handleFilters = (value: string | number) => {
         if (value.toString() === '0') {
@@ -170,6 +171,42 @@ export const Asistentes = () => {
                         )}
                     />
                 </Box>
+            </Grid>
+            <Grid size={'grow'} sx={{ height: '7vh', width: '100%', mb: -3, pl: 3, pr: 3, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+                <FormControl sx={{ minWidth: 100 }}>
+                    <InputLabel
+                        htmlFor="grouped-native-select"
+                        sx={{
+                            '&.Mui-focused': {
+                                color: 'black',
+                            },
+                            color: 'black'
+                        }}
+                    >
+                        Edición
+                    </InputLabel>
+                    <Select
+                        variant='outlined'
+                        size='small'
+                        native
+                        defaultValue={0}
+                        onChange={(e) => handleFilters(e.target.value)}
+                        label="Filtros"
+                        sx={{
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                borderColor: '#bd4f2b'
+                            }
+                        }}>
+                        <option value={'0'}>Todos</option>
+                        <optgroup label="MODULOS">
+                            {
+                                modulosFiltros.map((item: any) => (
+                                    <option value={item.nombre}>{item.nombre}</option>
+                                ))
+                            }
+                        </optgroup>
+                    </Select>
+                </FormControl>
             </Grid>
             <Card sx={{ width: '100%' }}>
                 <Paper sx={{ height: '100%', width: '100%', minHeight: '74vh' }}>
