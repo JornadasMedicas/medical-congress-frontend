@@ -4,9 +4,9 @@ import { Autocomplete, Box, Card, FormControl, InputLabel, Paper, Select, TableC
 import { DataGrid } from '@mui/x-data-grid';
 import AsistentesPaginationTable from './AsistentesPaginationTable';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAssitants, getAssitantsAutocomplete, getTotalAssitants } from '../../services/endpoints';
+import { getAssitants, getAssitantsAutocomplete, getEventEditions, getTotalAssitants } from '../../services/endpoints';
 import { ReduxGeneralSelector } from '../../interfaces/ReduxGeneral';
-import { ReqAssistants, ReqAssistantsAutocomplete, ReqAssistantsAutocompleteInterface } from '../../interfaces/IAdmin';
+import { ReqAssistants, ReqAssistantsAutocomplete, ReqAssistantsAutocompleteInterface, ReqAssistantsTableData, ReqEventEditions } from '../../interfaces/IAdmin';
 import { AssistantsRows, columns } from '../../helpers/assistantsTable';
 import { manageAssistantsTableActionFilters, setAssistantsTableAction } from '../../store/slices/admin';
 import { modulosFiltros, talleresFiltros } from '../../helpers/data';
@@ -16,10 +16,8 @@ export const Asistentes = () => {
     const responsive: boolean = useMediaQuery("(max-width : 1050px)");
     const { assistantsTable } = useSelector((state: ReduxGeneralSelector) => state.admin);
     const { filters } = assistantsTable;
-    const [totalRows, setTotalRows] = useState<number>();
-    const [rows, setRows] = useState<any>();
+    const [tableData, setTableData] = useState<ReqAssistantsTableData>({ rows: [], totalRows: 0, editions: [] });
     const [options, setOptions] = useState<ReqAssistantsAutocompleteInterface[]>([]);
-
 
     const handleFilters = (value: string | number) => {
         if (value.toString() === '0') {
@@ -29,6 +27,10 @@ export const Asistentes = () => {
         } else {
             dispatch(manageAssistantsTableActionFilters({ module: '', workshop: value.toString() }))
         }
+    }
+
+    const handleEditions = (value: any) => {
+        dispatch(manageAssistantsTableActionFilters({ year: value }))
     }
 
     const handleAutoChange = (value: ReqAssistantsAutocompleteInterface | null) => {
@@ -49,31 +51,29 @@ export const Asistentes = () => {
     }
 
     useEffect(() => {
-        const getAssistants = async () => {
-            let asistentes: ReqAssistants = await getAssitants({
-                limit: '10',
-                page: assistantsTable.tablePage,
-                email: filters.email,
-                module: filters.module,
-                workshop: filters.workshop
-            });
+        getAssitants({
+            limit: '10',
+            page: assistantsTable.tablePage,
+            email: filters.email,
+            module: filters.module,
+            workshop: filters.workshop
+        }).then((data: any) => {
+            let row = AssistantsRows(data.data);
+            setTableData({ ...tableData, rows: row });
+        })
 
-            let row = AssistantsRows(asistentes.data);
-            setRows(row);
-        }
+        getTotalAssitants({
+            email: filters.email,
+            module: filters.module,
+            workshop: filters.workshop
+        }).then((data: any) => {
+            setTableData({ ...tableData, totalRows: data.data });
+            dispatch(setAssistantsTableAction({ key: 'totalRows', value: data.data }));
+        });
 
-        const getTotal = async () => {
-            let total: any = await getTotalAssitants({
-                email: filters.email,
-                module: filters.module,
-                workshop: filters.workshop
-            });
-            setTotalRows(total.data)
-            dispatch(setAssistantsTableAction({ key: 'totalRows', value: total.data }))
-        }
-
-        getAssistants();
-        getTotal();
+        getEventEditions().then(((data: ReqEventEditions[]) => {
+            setTableData({ ...tableData, editions: data });
+        }));
     }, [assistantsTable.tablePage, filters.email, filters.module, filters.workshop, dispatch]);
 
     useEffect(() => {
@@ -173,7 +173,7 @@ export const Asistentes = () => {
                 </Box>
             </Grid>
             <Grid size={'grow'} sx={{ height: '7vh', width: '100%', mb: -3, pl: 3, pr: 3, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
-                <FormControl sx={{ minWidth: 100 }}>
+                <FormControl sx={{ minWidth: 150 }}>
                     <InputLabel
                         htmlFor="grouped-native-select"
                         sx={{
@@ -189,22 +189,17 @@ export const Asistentes = () => {
                         variant='outlined'
                         size='small'
                         native
-                        defaultValue={0}
-                        onChange={(e) => handleFilters(e.target.value)}
+                        value={filters.year}
+                        onChange={(e) => handleEditions(e.target.value)}
                         label="Filtros"
                         sx={{
                             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                                 borderColor: '#bd4f2b'
                             }
                         }}>
-                        <option value={'0'}>Todos</option>
-                        <optgroup label="MODULOS">
-                            {
-                                modulosFiltros.map((item: any) => (
-                                    <option value={item.nombre}>{item.nombre}</option>
-                                ))
-                            }
-                        </optgroup>
+                        {tableData.editions.map(edition => (
+                            <option value={edition.edicion}>{edition.edicion}</option>
+                        ))}
                     </Select>
                 </FormControl>
             </Grid>
@@ -249,10 +244,10 @@ export const Asistentes = () => {
                             disableColumnMenu
                             filterMode="server"
                             disableColumnFilter
-                            rows={rows !== undefined ? rows : []}
+                            rows={tableData.rows}
                             paginationMode='server'
                             getRowId={(row) => row.id}
-                            rowCount={totalRows}
+                            rowCount={tableData.totalRows}
                             pageSizeOptions={[10]}
                             columns={columns}
                             slots={{ pagination: AsistentesPaginationTable }}

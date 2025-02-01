@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ReduxJornadasAdmin } from "../../interfaces/IAdmin";
+import moment from "moment";
 
 const initialState: ReduxJornadasAdmin = {
     assistantsTable: {
@@ -9,7 +10,8 @@ const initialState: ReduxJornadasAdmin = {
         filters: {
             email: '',
             module: '',
-            workshop: ''
+            workshop: '',
+            year: moment.utc().subtract(6, 'hour').format('YYYY')
         }
     }
 }

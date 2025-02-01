@@ -40,6 +40,15 @@ export const getTotalAssitants = async ({ ...params }: PropsGetCountAssistantsFi
     }
 }
 
+export const getEventEditions = async (): Promise<any> => {
+    try {
+        const res: AxiosResponse = await jornadasApi.get(`/api/assistants/editions`);
+        return res.data;
+    } catch (err: unknown) {
+        return { error: err };
+    }
+}
+
 export const postContactMail = async ({ ...params }: PropsFormData) => {
     try {
         const res: AxiosResponse = await jornadasApi.post(`/api/contact/mail`,

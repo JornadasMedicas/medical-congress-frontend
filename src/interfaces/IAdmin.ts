@@ -81,6 +81,7 @@ export interface PropsReduxAssistantsFilters {
     email: string;
     module: string;
     workshop: string;
+    year: string;
 }
 
 export interface ReqAssistantsAutocompleteInterface {
@@ -93,4 +94,15 @@ export interface ReqAssistantsAutocomplete {
     ok: boolean;
     msg: string;
     data: ReqAssistantsAutocompleteInterface[]
+}
+
+export interface ReqEventEditions {
+    id: number;
+    edicion: string;
+}
+
+export interface ReqAssistantsTableData {
+    rows: any[];
+    totalRows: number;
+    editions: ReqEventEditions[];
 }
